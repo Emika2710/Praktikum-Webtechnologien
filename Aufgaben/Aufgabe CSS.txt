@@ -1,0 +1,51 @@
+# Anforderungen:
+Setzen Sie anschließend folgende Layout-Regeln um:
+- Ändern Sie die Schriftart font-family in eine Art Ihrer Wahl
+- Ändern Sie die Schriftgröße font-size in eine Größe Ihrer Wahl
+- Ändern Sie den Text in Paragraphen mittels text-align auf Blocksatz justify
+- Ändern Sie die Hintergrundfarbe background-color der Zeile im Tabellenkopf auf #ddd
+- Ändern Sie die Schriftstärke font-weight des Namens in der ersten und zweiten Spalte auf bold.
+- Ändern Sie die Hintergrundfarbe background-color der zweiten Zeile im tbody-Element auf #eee, wie 
+könnte jede zweite Zeile adressiert werden?
+- Geben Sie der Tabelle einen Rahmen, stellen Sie sicher, dass der Rahmen sich nicht doppelt. 
+(Optional) Geben Sie der Tabelle keine äußere Umrandung, nur eine Abtrennung der Zellen untereinander.
+- Zentrieren Sie den gesamten Inhalt (vgl margin in Kombination mit auto in Kombination mit einer Breite)
+- Stellen Sie sicher, dass die Tabelle die verfügbare Inhaltsbreite ausnutzt
+- Realisieren Sie drei unterschiedliche Stile für die drei Links im Dokument, änderen Sie zusätzlich das 
+Layouts der Links, wenn die Maus über dem Link platziert ist (vgl. Pseudoklassen)
+- Markieren Sie die gesamte Zeile mit der Hintegrundfarbe #ccc wenn die Maus über der Zeile ist und ändern 
+Sie den Cursor mit z.B. cursor: pointer. (Optional) Muss die Cursor-Änderung mit der Hover-Pseudoklasse in 
+Verbindung stehen?
+
+# Vorbereitung
+Nutzen Sie das Ergebnis aus Aufgabenblatt 1 und öffnen Sie den Projektordner in Visual Studio Code. 
+Die Arbeiten sind im Team aufzuteilen. Jedes Team-Mitglied soll einen eigenen Anteil am CSS-Dokument 
+eigenverantwortlich umsetzen, die Aufteilung kann im Team individuell entschieden werden.
+
+# Teilaufgabe a: Layout
+Positionieren Sie die Inhaltselemente mittig und definieren Sie eine maximale Breite für den
+Inhalt, z.B. 900 Pixel.
+
+# Teilaufgabe b: Text-Formatierung
+Setzen Sie eine geeignete Textformatierung für die Webseite um. Konfigurieren Sie die
+Schriftarten, -größen und -farben nach eigenem Ermessen für die verwendeten HTML-Elemente
+wie z.B. Überschriften, Paragraphen, Listen und Links.
+
+# Teilaufgabe c: Links
+Konfigurieren Sie Links so, dass diese deutlich als Links erkennbar sind und einen visuellen
+Effekt anbieten, wenn die Maus über dem Link ist. Definieren Sie Regeln für einen speziellen
+Link, der sich von den anderen Links abhebt (z.B. durch rote Schriftfarbe), um anzudeuten,
+dass das Betätigen des Links nur mit bedacht passiert (vgl. Freund entfernen).
+
+# Teilaufgabe d: Formulare
+Konfigurieren Sie die Formularfelder und verändern Sie deren Aussehen. Dabei sollen Rahmen
+und Abstände angepasst werden. Ebenso ist ein einheitliches Schriftbild erforderlich. Die
+Schriftgröße ist anzupassen und die Ausrichtung soll mit Labels und Buttons abgeglichen
+werden.
+
+# Teilaufgabe e: Responsive
+Die Anwendung soll auf verschiedenen Displaygrößen angezeigt werden können. Wird die
+Anwendung auf einem Display angezeigt, dass weniger als 900 Pixel in der Breite ermöglicht,
+soll sich der Inhalt immer die verfügbaren 100% nutzen. Definieren Sie zusätzlich CSS-Regeln,
+die Formularelemente, welche nebeneinander liegen, untereinander positioniert (vgl. Login,
+Registrieren, Freund hinzufügen, usw.).
