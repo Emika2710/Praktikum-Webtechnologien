@@ -38,11 +38,12 @@ h1 {
 */
 
 form {
-    width: 60%;
+    width: 40%;
+    align-self: center;
 }
 
 label {
-    width: 18%;
+    width: 30%;
     text-align: right;
     display: inline-block;
     box-sizing: border-box;
@@ -50,13 +51,20 @@ label {
 }
 
 input[type=text] {
-    width: 60%;
+    width: 50%;
     box-sizing: border-box;
     font-size: 1em;
     margin-bottom: 10px;
     border: 1px solid #999;
     padding: 5px 10px;
 }
+
+.form-container {
+    justify-content: center;
+    align-items: center;
+    border: black 1px dotted;
+}
+
 
 /*
 2. Responsive
