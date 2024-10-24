@@ -1,6 +1,9 @@
 /*Meli
 1. Layout
 */
+html {
+    max-width: 900px;
+}
 h1 {
     text-align: center;
 }
@@ -20,11 +23,16 @@ img {
 html {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    font-size: 20px;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 1500;
+}
+li {
+    list-style: none;
+    text-align: left;
 }
 
 /*
