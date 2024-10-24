@@ -4,11 +4,13 @@
 h1 {
     text-align: center;
 }
-.flex { 
-    display: flex; 
-    justify-content: center; 
+
+.flex {
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
+
 /*
 2. Textformatierung
 */
@@ -16,10 +18,12 @@ html {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
+
 h1 {
     font-size: 24px;
     font-weight: 1500;
 }
+
 /*
 3. Links
 */
@@ -32,6 +36,11 @@ h1 {
 /*Emma
 1. Formulare 
 */
+
+form {
+    width: 60%;
+}
+
 label {
     width: 18%;
     text-align: right;
@@ -42,12 +51,13 @@ label {
 
 input[type=text] {
     width: 60%;
-        box-sizing: border-box;
-        font-size: 1em;
-        margin-bottom: 10px;
-        border: 1px solid #999;
-        padding: 5px 10px;
+    box-sizing: border-box;
+    font-size: 1em;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+    padding: 5px 10px;
 }
+
 /*
 2. Responsive
 */
