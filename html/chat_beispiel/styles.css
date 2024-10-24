@@ -3,21 +3,29 @@ html {
     font-size: 16 pt;
 }
 
+body {
+    width: 60%;
+    margin: 0px auto;
+}
+
 p {
     text-align: justify;
 }
 
 table {
-    border-collapse: separate;
-    border-spacing: 0;
+    border-collapse: collapse;
+    border-style: hidden;
+    width: 100%;
 }
 
 table thead {
     background-color: #ddd;
 }
 
-table tbody td {
+table td,
+th {
     border: 1px solid black;
+    padding: 5px;
 }
 
 table tbody td:first-child,
@@ -27,4 +35,24 @@ td:nth-child(2) {
 
 table tbody tr:nth-child(2n-1) {
     background-color: #eee;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(45, 45, 115);
+}
+
+a:hover {
+    color: rgb(41, 83, 224);
+}
+
+.return {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.return a {
+    color: white;
+    padding: 5px;
+    background-color: rgb(48, 48, 48);
 }
