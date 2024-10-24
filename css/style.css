@@ -9,6 +9,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 img {
@@ -32,25 +33,28 @@ h1 {
 li {
     list-style: none;
     text-align: left;
-    
+
 }
 
 /*
 3. Links
 */
-a:link{
+a:link {
     text-decoration: none;
     color: blue;
-    
+
 }
+
 a:hover {
     font-weight: 5000;
     text-decoration: underline;
     color: blue;
 }
-a:visited{
+
+a:visited {
     color: blue;
 }
+
 /*
 */
 
@@ -59,12 +63,6 @@ a:visited{
 /*Emma
 1. Formulare 
 */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 label {
     width: 30%;
@@ -83,10 +81,12 @@ input[type=text] {
     padding: 5px 10px;
 }
 
-form .form-container {
+.form-container {
     width: 50%;
     border: black 1px dotted;
 }
+
+.form-buttons {}
 
 
 /*
