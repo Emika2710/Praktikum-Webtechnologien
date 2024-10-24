@@ -30,5 +30,23 @@ h1 {
 
 /*Emma
 1. Formulare 
+*/
+label {
+    width: 18%;
+    text-align: right;
+    display: inline-block;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+input[type=text] {
+    width: 60%;
+        box-sizing: border-box;
+        font-size: 1em;
+        margin-bottom: 10px;
+        border: 1px solid #999;
+        padding: 5px 10px;
+}
+/*
 2. Responsive
 */
