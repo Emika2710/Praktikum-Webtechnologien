@@ -4,15 +4,18 @@
 h1 {
     text-align: center;
 }
+
 .flex {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 img {
     border-radius: 50%;
 }
+
 button {
     height: 30px;
     width: 100px;
@@ -36,7 +39,7 @@ h1 {
 li {
     list-style: none;
     text-align: left;
-    
+
 }
 
 /*
@@ -66,6 +69,10 @@ a:visited {
 /*Emma
 1. Formulare 
 */
+.form-container {
+    width: 50%;
+    border: black 1px dotted;
+}
 
 label {
     width: 30%;
@@ -75,6 +82,12 @@ label {
     padding-right: 20px;
 }
 
+.title {
+    display: inline-block;
+    width: 45%;
+    text-align: left;
+}
+
 input[type=text] {
     width: 50%;
     box-sizing: border-box;
@@ -82,11 +95,6 @@ input[type=text] {
     margin-bottom: 10px;
     border: 1px solid #999;
     padding: 5px 10px;
-}
-
-.form-container {
-    width: 50%;
-    border: black 1px dotted;
 }
 
 /*
