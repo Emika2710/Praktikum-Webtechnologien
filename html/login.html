@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="/css/style.css">
     <meta charset="UTF-8" />
     <title>Login</title>
 </head>
+
 <body>
     <div class="flex">
         <img src="../images/chat.png" alt="Login Image" height="200px" width="200px">
     </div>
     <h1>Please sign in!</h1>
     Login <br>
-    <p style="border: 1px solid black">
-        Username <input type="text"placeholder="Username"><br>
-        Password <input type="text"placeholder="Password"><br>
-    </p>
-    <a href="register.html"><input type="button" value="Register"></a>
-    <a href="friendlist.html"><input type="button" value="Login"></a>
+    <form action="friendlist.html" method="get">
+        <p style="border: 1px solid black">
+            <label for="register_username">Username:</label><input type="text" placeholder="Username"><br>
+            <label for="register_username">Passwort:</label><input type="text" placeholder="Password"><br>
+        </p>
+        <a href="register.html">Register</a>
+        <input type="submit" value="Login">
+    </form>
 </body>
+
 </html>
