@@ -1,0 +1,30 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16 pt;
+}
+
+p {
+    text-align: justify;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+table thead {
+    background-color: #ddd;
+}
+
+table tbody td {
+    border: 1px solid black;
+}
+
+table tbody td:first-child,
+td:nth-child(2) {
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(2n-1) {
+    background-color: #eee;
+}
