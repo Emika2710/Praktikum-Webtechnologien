@@ -1,7 +1,12 @@
 /*Meli
 1. Layout
 */
-img {
+h1 {
+    text-align: center;
+}
+.flex { 
+    display: flex; 
+    justify-content: center; 
     align-items: center;
 }
 /*
@@ -12,7 +17,7 @@ html {
 }
 h1 {
     font-size: 24px;
-    font-weight: 100;
+    font-weight: 1500;
 }
 /*
 3. Links
