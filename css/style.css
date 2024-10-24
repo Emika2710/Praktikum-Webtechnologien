@@ -46,9 +46,11 @@ li {
 /*Emma
 1. Formulare 
 */
-
 form {
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 label {
@@ -68,10 +70,8 @@ input[type=text] {
     padding: 5px 10px;
 }
 
-.form-container {
+form .form-container {
     width: 50%;
-    justify-content: center;
-    align-items: center;
     border: black 1px dotted;
 }
 
