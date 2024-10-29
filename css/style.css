@@ -30,6 +30,16 @@ button {
     background-color: #888888;
     color: white;
 }
+.form-buttons input[type="submit"] {
+    background-color: rgb(70, 70, 255);
+    color: white;
+}
+.form-buttons a {
+    display: inline-block;
+    padding: 3px; 
+    background-color: #888888; 
+    color: white !important; 
+}
 input{
     height: 30px;
     width: 90px;
@@ -40,8 +50,6 @@ input{
     height: 30px;
     width: 150px;
     font-size: 20px;
-    background-color: #6461ff;
-    color: white;
 }
 .chat-text {
     text-align: left;
