@@ -18,11 +18,12 @@ h1 {
 img {
     border-radius: 50%;
 }
-
 button {
     height: 30px;
     width: 90px;
     font-size: 20px;
+    background-color: #888888;
+    color: white;
 }
 input{
     height: 30px;
@@ -33,10 +34,8 @@ input{
     height: 30px;
     width: 150px;
     font-size: 20px;
-}
-.chat-with-tom {
-    max-width: 900px;
-    text-align: left;
+    background-color: #6461ff;
+    color: white;
 }
 
 
