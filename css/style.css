@@ -1,6 +1,9 @@
 /*Meli
 1. Layout
 */
+html{
+    background-color: #dddddd;
+}
 h1 {
     text-align: center;
 }
@@ -30,6 +33,10 @@ input{
     height: 30px;
     width: 150px;
     font-size: 20px;
+}
+.chat-with-tom {
+    max-width: 900px;
+    text-align: left;
 }
 
 
@@ -83,6 +90,7 @@ a:visited {
 .form-container {
     width: 50%;
     border: black 1px dotted;
+    background-color: white;
 }
 
 label {
