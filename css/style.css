@@ -4,6 +4,11 @@
 html{
     background-color: #dddddd;
 }
+
+hr{
+    width: 900px;
+}
+
 h1 {
     text-align: center;
 }
