@@ -1,11 +1,11 @@
 /*Meli
 1. Layout
 */
-html{
+html {
     background-color: #dddddd;
 }
 
-hr{
+hr {
     width: 900px;
 }
 
@@ -23,6 +23,7 @@ h1 {
 img {
     border-radius: 50%;
 }
+
 button {
     height: 30px;
     width: 90px;
@@ -30,27 +31,31 @@ button {
     background-color: #888888;
     color: white;
 }
+
 .form-buttons input[type="submit"] {
     background-color: rgb(70, 70, 255);
     color: white;
 }
+
 .form-buttons a {
     display: inline-block;
-    padding: 3px; 
-    background-color: #888888; 
-    color: white !important; 
+    padding: 3px;
+    background-color: #888888;
+    color: white !important;
 }
-input{
+
+input {
     height: 30px;
     width: 90px;
     font-size: 20px;
 }
 
-.create-account{
+.create-account {
     height: 30px;
     width: 150px;
     font-size: 20px;
 }
+
 .chat-text {
     text-align: left;
 }
@@ -87,13 +92,13 @@ a:link {
 
 a:hover {
     font-weight: 5000;
-    text-decoration: underline;
     color: blue;
 }
 
 a:visited {
     color: blue;
 }
+
 /*
 */
 
@@ -106,6 +111,7 @@ a:visited {
     width: 50%;
     border: black 1px dotted;
     background-color: white;
+    margin-bottom: 10px;
 }
 
 label {
