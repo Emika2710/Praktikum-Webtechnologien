@@ -108,14 +108,15 @@ a:visited {
 1. Formulare 
 */
 .form-container {
-    width: 50%;
+    width: 75%;
     border: black 1px dotted;
     background-color: white;
     margin-bottom: 10px;
+    margin-left: 2px;
 }
 
 label {
-    width: 30%;
+    width: 190px;
     text-align: right;
     display: inline-block;
     box-sizing: border-box;
@@ -135,8 +136,32 @@ input[type=text] {
     margin-bottom: 10px;
     border: 1px solid #999;
     padding: 5px 10px;
+    margin-right: 10pt;
 }
 
 /*
 2. Responsive
+
 */
+
+@media screen and (max-width: 600px) {
+
+    input[type="text"] {
+        width: 70%;
+        display: block;
+        text-align: center;
+        display: inline-block;
+    }
+
+    label {
+        width: 70%;
+        text-align: left;
+    }
+
+    input[type="button"] {
+        width: 90px;
+        display: block;
+        text-align: center;
+        display: inline-block;
+    }
+}
