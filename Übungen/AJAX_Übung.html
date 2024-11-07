@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AJAX</title>
+</head>
+
+<body>
+    <div id="myDiv">
+    </div>
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText);
+                    const element = document.getElementById('myDiv');
+                    element.innerText = xmlhttp.responseText;
+                    element.style.color = "grey";
+                    element.style.fontFamily = "Arial";
+                } else {
+                    console.error("Fehler (" + xmlhttp.status + "): "
+                        + xmlhttp.responseText);
+                }
+            }
+        };
+        // xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/test.txt", true);
+        //xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/notfound", true);
+        xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/test.txt", true);
+        xmlhttp.send();
+
+
+    </script>
+</body>
+
+</html>
