@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AJAX und Formular-Validierung</title>
+</head>
+
+<body>
+    <form id="my-form">
+        <input name="check">
+        <button>Submit</button>
+    </form>
+    <script>
+        function checkForm() {
+            const inputValue = document.querySelector('input[name="check"]').value;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        console.log("Gleich");
+                    } else {
+                        console.log("Ungleich");
+                    }
+                }
+            };
+            xmlhttp.open("GET",
+                "https://online-lectures-cs.thi.de/chat/test/abc/" + inputValue, true);
+            xmlhttp.send();
+        }
+    </script>
+</body>
+
+</html>
