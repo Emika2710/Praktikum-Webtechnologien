@@ -6,7 +6,7 @@ html {
 }
 
 hr {
-    width: 900px;
+    width: 90%;
 }
 
 h1 {
@@ -108,7 +108,8 @@ a:visited {
 1. Formulare 
 */
 .form-container {
-    width: 60%;
+    width: 75%;
+    max-width: 600px;
     border: black 1px dotted;
     background-color: white;
     margin-bottom: 10px;
@@ -120,17 +121,19 @@ label {
     text-align: right;
     display: inline-block;
     box-sizing: border-box;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 .title {
     display: inline-block;
-    width: 45%;
+    width: 75%;
+    max-width: 600px;
     text-align: left;
 }
 
 input[type=text] {
     width: 50%;
+    max-width: 600px;
     box-sizing: border-box;
     font-size: 1em;
     margin-bottom: 10px;
