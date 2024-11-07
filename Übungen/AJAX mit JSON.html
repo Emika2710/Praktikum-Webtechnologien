@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AJAX mit JSON</title>
+</head>
+
+<body>
+    <div id="myDiv">
+    </div>
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status == 200) {
+                    console.log(xmlhttp.responseText);
+                    let data = JSON.parse(xmlhttp.responseText);
+                    console.log(data);
+                    const element = document.getElementById('myDiv');
+                    // HTML Liste erstellen
+                    let ul = document.createElement('ul');
+                    element.appendChild(ul);
+                    // Liste mit Daten aus dem JSON Array befüllen
+                    data.forEach(item => {
+                        let li = document.createElement('li');
+                        // Zeitstempel konvertieren
+                        let date = new Date(item.time);
+                        let formattedTime = date.toLocaleString(); // Konvertiert in ein lesbares Format
+                        li.textContent = `Name: ${item.from} (${formattedTime}): ${item.msg}`;
+                        ul.appendChild(li);
+                    });
+                } else {
+                    console.error("Fehler (" + xmlhttp.status + "): "
+                        + xmlhttp.responseText);
+                }
+            }
+        };
+        xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/test.json", true);
+        xmlhttp.send();
+    </script>
+</body>
+
+</html>
