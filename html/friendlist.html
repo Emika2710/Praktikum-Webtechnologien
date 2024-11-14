@@ -26,10 +26,24 @@
     <hr>
     <h2>New Requests</h2>
     <!-- Liste draus machen-->
-    1. Friend Request from <b>Track</b>
     <!-- als Link gestalten-->
+    <!--
+        1. Friend Request from <b>Track</b>
     <input type="button" value="Accept"></input>
     <input type="button" value="Reject"></input>
+    -->
+
+    <form class="flex" action="friendlist.html" method="get">
+        <div class="form-list">
+            <ol>
+                <li>Friend Request from <b>Track</b></li>
+            </ol>
+        </div>
+        <div class="form-buttons">
+            <input type="submit" value="Accept" name="accept" ID="friendlist_accept">
+            <input type="submit" value="Reject" name="accept" ID="friendlist_reject">
+        </div>
+    </form>
     <hr>
     <form>
         <input type="text" placeholder="Add Friend to List"></input>
