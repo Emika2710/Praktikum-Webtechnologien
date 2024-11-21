@@ -20,7 +20,7 @@ function updateFriends(data) {
 
             let friend = document.createElement('a');
             // An Meli: hier kannst zu die Infos (welcher Freund ist es) weiterleiten
-            friend.href = "chat.html" + "?friend=" + friends;
+            friend.setAttribute("href", "chat.html?friend=" + friends);
             friend.innerHTML = friends;
 
             let div = document.createElement('div');
