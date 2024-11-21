@@ -1,6 +1,6 @@
 
-window.backendUrl = "https://online-lectures-cs.thi.de/chat/91f60642-f8d4-42ec - a26d - 84c7eb95dbc3";
-window.token = "...z.B. das Token für Tom...";
+window.backendUrl = "https://online-lectures-cs.thi.de/chat/f00a3c26-3aa4-40c6-a772-5adebc4c3689";
+window.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMTkyODk4fQ.eG5Bqpm99eI12eWnB_puyn3enKMFjxhcIrmBNyt1Br8";
 
 const xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function () {
