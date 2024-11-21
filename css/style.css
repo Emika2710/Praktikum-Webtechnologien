@@ -59,6 +59,34 @@ input {
 .chat-text {
     text-align: left;
 }
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    background-color: rgb(70, 70, 255);
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    margin-right: 5%;
+}
+
+.friendlist {
+    list-style: none;
+}
+
+.friendlist li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.friendlist a {
+    text-decoration: none;
+    color: black;
+}
+
 
 
 /*
