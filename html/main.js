@@ -1,8 +1,32 @@
 window.backendUrl = "https://online-lectures-cs.thi.de/chat/f00a3c26-3aa4-40c6-a772-5adebc4c3689";
 window.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmVycnkiLCJpYXQiOjE3MzIxOTI4OTh9.i4-FjUDMIaJ64B0kCXSX37yJgkl8Rm_t2ZSCawn5AFo";
 
+//Chat laden
+function loadChat(){
 
-// Freundesliste mit nachrichten darstellen
+}
+
+//neue Nachricht senden
+function sendMessage(){
+
+}
+
+//Link aufruf des Chats
+function loadChat (friendValue){
+
+}
+// gibt Chatpartner name zurück
+function	getChatpartner()	{
+    const	url	=	new	URL(window.location.href);
+    //	Access	the	query	parameters	using	searchParams
+    const	queryParams	=	url.searchParams;
+    //	Retrieve	the	value	of	the	"friend"	parameter
+    const	friendValue	=	queryParams.get("friend");
+    console.log("Friend:",	friendValue);
+    return	friendValue;
+}
+
+// Freundesliste mit nachrichten darstellen 
 function updateFriends(data) {
 
     let ul = document.getElementById("friendslist");
