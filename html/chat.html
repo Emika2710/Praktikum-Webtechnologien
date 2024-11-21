@@ -16,17 +16,19 @@
     </p>
     <form class="flex" action="friendlist.html" method="get">
         <div class="form-container">
-            <ul>
-                <li>Tom: Hallo Welt!</li>
-                <li>Jerry: Hallo </li>
+            <ul id="chat">
             </ul>
         </div>
     </form>
     <br>
     <form method="get" action="chat.html">
-        <input type="text" placeholder="new message">
-        <input type="submit" value="Send">
+        <input type="text" id="message" placeholder="new message">
+        <input type="button" value="Send" onclick="sendMessage()">
     </form>
+    <script src="main.js"></script>
+    <script>
+        onChatLoad();
+    </script>
 </body>
 
 </html>
