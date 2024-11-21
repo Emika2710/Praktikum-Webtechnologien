@@ -49,7 +49,6 @@ function updateFriends(data) {
 // firendlist Aktualisieren
 function loadFriends() {
 
-
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -64,6 +63,9 @@ function loadFriends() {
     xmlhttp.send();
 
 };
+
+
+
 /*
 window.setInterval(function () {
     loadFriends();
