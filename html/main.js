@@ -73,12 +73,15 @@ function loadFriends() {
 
 };
 
-//Jede Sekunde wird neu geladen
+
+
+/*
 window.setInterval(function () {
     loadFriends();
 }, 1000);
-
+*/
 loadFriends();
+
 //Funktionen für den Chat
 function onChatLoad() {
     let friend = getChatpartner();
