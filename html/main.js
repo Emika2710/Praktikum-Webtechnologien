@@ -58,6 +58,10 @@ function updateFriends(data) {
 // Freundesliste Aktualisieren
 function loadFriends() {
 
+};
+
+// Friendlist sauber laden
+function loadFriendlist() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -70,17 +74,15 @@ function loadFriends() {
     xmlhttp.setRequestHeader('Content-type', 'application/json');
     xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjAzMDc3fQ.KGI9SdwBqsh2yDyGaRjcKDC8CCGCfHxUhXrxNMs06Kc');
     xmlhttp.send();
-
 };
 
 
-
-/*
 window.setInterval(function () {
     loadFriends();
 }, 1000);
-*/
+
 loadFriends();
+
 
 //Funktionen für den Chat
 function onChatLoad() {
@@ -111,7 +113,7 @@ function loadChat() {
     xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjI1NDY0fQ.xhntKonXGqqHiVEDACeldiO597mhL9HPOVr4jnS3lIo');
     xmlhttp.send();
 }
- //Senden einer Nachricht
+//Senden einer Nachricht
 function sendMessage() {
     let messageElement = document.getElementById("message");
     let message = messageElement.value;
