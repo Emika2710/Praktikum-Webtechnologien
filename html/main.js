@@ -39,7 +39,6 @@ function updateFriends(data) {
             li.appendChild(friend);
             li.appendChild(div);
 
-
             ul.appendChild(li);
         }
         if (data[i].status === "requested") {
@@ -49,19 +48,33 @@ function updateFriends(data) {
 
             li.innerHTML = "Friend Request from ";
             li.appendChild(b);
+
+            let div = document.createElement('div');
+
+            let button1 = document.createElement('input');
+            button1.type = "button";
+            button1.value = "Accept";
+            button1.id = "friendlist_accept";
+
+            let button2 = document.createElement('input');
+            button2.type = "button";
+            button2.value = "Decline";
+            button2.id = "friendlist_decline";
+
+            div.appendChild(button1);
+            div.appendChild(button2);
+
+            li.appendChild(div);
+
             ol.appendChild(li);
 
         }
     }
 }
 
-// Freundesliste Aktualisieren
-function loadFriends() {
-
-};
 
 // Friendlist sauber laden
-function loadFriendlist() {
+function loadFriendList() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -75,14 +88,6 @@ function loadFriendlist() {
     xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjAzMDc3fQ.KGI9SdwBqsh2yDyGaRjcKDC8CCGCfHxUhXrxNMs06Kc');
     xmlhttp.send();
 };
-
-
-window.setInterval(function () {
-    loadFriends();
-}, 1000);
-
-loadFriends();
-
 
 //Funktionen für den Chat
 function onChatLoad() {
@@ -113,6 +118,7 @@ function loadChat() {
     xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjI1NDY0fQ.xhntKonXGqqHiVEDACeldiO597mhL9HPOVr4jnS3lIo');
     xmlhttp.send();
 }
+
 //Senden einer Nachricht
 function sendMessage() {
     let messageElement = document.getElementById("message");
@@ -131,3 +137,23 @@ function sendMessage() {
     xmlhttp.send(jsonString); // Send JSON-data to server
     messageElement.value = "";
 }
+
+function loadFriends() {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            let data = JSON.parse(xmlhttp.responseText);
+            console.log(data);
+        }
+    };
+    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/f00a3c26-3aa4-40c6-a772-5adebc4c3689/friend", true);
+    xmlhttp.setRequestHeader('Content-type', 'application/json');
+    xmlhttp.setRequestHeader('Authorization', 'Bearer ' + window.token);
+    xmlhttp.send();
+}
+
+window.setInterval(function () {
+    loadFriends();
+}, 1000);
+
+loadFriends();

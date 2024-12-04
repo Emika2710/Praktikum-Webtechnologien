@@ -31,16 +31,9 @@
     -->
 
     <form class="flex" action="friendlist.html" method="get">
-        <div class="form-list" id="requests">
-            <!-- ID in ol-->
-            <ol>
-                <!--Information, die übertragen werden muss-->
-                <li>Friend Request from <b>Track</b></li>
+        <div class="form-list" >
+            <ol id="requests">
             </ol>
-        </div>
-        <div class="form-buttons">
-            <input type="submit" value="Accept" name="accept" ID="friendlist_accept">
-            <input type="submit" value="Reject" name="accept" ID="friendlist_reject">
         </div>
     </form>
     <hr>
@@ -51,7 +44,7 @@
 
     <script src="main.js"></script>
     <script>
-        loadFriendlist();
+        loadFriendList();
     </script>
 </body>
 
