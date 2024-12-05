@@ -16,9 +16,9 @@ mklink /J C:\xampp\htdocs [Path to]\Praktikum
 #### run
 
 1) Open Xampp-control-panel
-1) start apache
-1) open the localhost (127.0.0.1) in the browser
-1) profit
+2) start apache
+3) open the localhost (127.0.0.1) in the browser (Eingabe "localhost")
+4) profit
 
 Dumi-Datensatz ID
 f3630146-151d-41a7-a0bb-fd844a6cdebc
