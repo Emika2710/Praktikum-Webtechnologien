@@ -22,3 +22,7 @@ mklink /J C:\xampp\htdocs [Path to]\Praktikum
 
 Dumi-Datensatz ID
 f3630146-151d-41a7-a0bb-fd844a6cdebc
+
+
+Name:
+http://localhost/ChatApp/html/index.html?
