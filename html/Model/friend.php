@@ -21,12 +21,5 @@ class Friend implements JsonSerializable {
         return get_object_vars($this);
     }
 
-    public static function fromJson($json): Friend {
-        $obj = new Friend("");
-        foreach ($json as $key => $value) {
-            $obj->$key = $value;
-        }
-        return $obj;
-    }
 }
 ?>
