@@ -26,7 +26,6 @@
         <input type="button" value="Send" onclick="sendMessage()">
     </form>
     <script src="main.js"></script>
-    <!-- Form kann weg -->
     <script>
         onChatLoad();
     </script>

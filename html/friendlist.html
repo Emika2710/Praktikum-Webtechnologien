@@ -22,13 +22,6 @@
     </div>
     <hr>
     <h2>New Requests</h2>
-    <!-- Liste draus machen-->
-    <!-- als Link gestalten-->
-    <!--
-        1. Friend Request from <b>Track</b>
-    <input type="button" value="Accept"></input>
-    <input type="button" value="Reject"></input>
-    -->
 
     <form class="flex" action="friendlist.html" method="get">
         <div class="form-list" >
