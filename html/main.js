@@ -126,7 +126,7 @@ function sendMessage() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "https://online-lectures-cs.thi.de/chat/fe0874f3-946f-452d-b623-46c95cff6b52/message", true);
     xmlhttp.setRequestHeader('Content-type', 'application/json');
-    // Add token, e. g., from Tom
+    // Add token
     xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjI1NDY0fQ.xhntKonXGqqHiVEDACeldiO597mhL9HPOVr4jnS3lIo');
     // Create request data with message and receiver
     let data = {
