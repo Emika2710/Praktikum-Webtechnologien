@@ -5,6 +5,7 @@ namespace Model;
 
 namespace Model;
 use JsonSerializable;
+
 class Friend implements JsonSerializable {
     
     private $username;

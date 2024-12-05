@@ -17,7 +17,7 @@
     <div class="title">
         Register
     </div>
-    <form class="flex" action="friendlist.html" method="get">
+    <form class="flex" action="friendlist.php" method="get">
         <div class="form-container">
             <br>
             <label for="register_username">Username:</label> <input type="text" placeholder="Username"> <br>
@@ -25,7 +25,7 @@
             <label for="register_confirm">Confirm Passwort:</label> <input type="text" placeholder="Confirm Passwort">
         </div>
         <div class="form-buttons">
-            <a href="login.html">Cancel</a>
+            <a href="login.php">Cancel</a>
             <input type="submit" value="Create Account" class="create-account">
         </div>
     </form>

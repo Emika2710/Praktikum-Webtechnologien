@@ -10,18 +10,18 @@
 <body>
     <h1>Chat with Tom</h1>
     <p class="title">
-        <a href="friendlist.html">
+        <a href="friendlist.php">
             &lt;back </a>|
-        <a href="friendlist.html" style="color: red;">remove friend</a>
+        <a href="friendlist.php" style="color: red;">remove friend</a>
     </p>
-    <form class="flex" action="friendlist.html" method="get">
+    <form class="flex" action="friendlist.php" method="get">
         <div class="form-container">
             <ul id="chat">
             </ul>
         </div>
     </form>
     <br>
-    <form method="get" action="chat.html">
+    <form method="get" action="chat.php">
         <input type="text" id="message" placeholder="new message">
         <input type="button" value="Send" onclick="sendMessage()">
     </form>
