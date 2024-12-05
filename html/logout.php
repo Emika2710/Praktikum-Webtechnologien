@@ -14,7 +14,7 @@
     <h1>Logged out...!</h1>
     see you!<br>
     <br>
-    <a href="login.html">Login again</a>
+    <a href="login.php">Login again</a>
 </body>
 
 </html>

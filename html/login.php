@@ -13,7 +13,7 @@
     </div>
     <h1>Please sign in!</h1>
     <div class="title"> Login </div>
-    <form class="flex" action="friendlist.html" method="get">
+    <form class="flex" action="friendlist.php" method="get">
         <div class="form-container">
             <br>
             <label for="login_username">Username:</label><input type="text" placeholder="Username" name="User"
@@ -22,7 +22,7 @@
                 id="login_passwort">
         </div>
         <div class="form-buttons">
-            <a href="register.html">Register</a>
+            <a href="register.php">Register</a>
             <input type="submit" value="Login">
         </div>
 
