@@ -9,7 +9,7 @@ class User implements JsonSerializable{
         return	get_object_vars($this);
         }
 
-    // konstruktor
+    // Konstruktor
     public function __constructor($username = null) {
         $this->username = $username;
     }
@@ -17,6 +17,15 @@ class User implements JsonSerializable{
     // Getter-Funktion für das Attribut username
     public function getUsername() {
         return $this->username;
+    }
+    public static function fromJson($data) {
+        $user = new self();   // Erzeugt eine neue Instanz der Klasse User
+        foreach($data as $key => $value) {
+            if (property_exists($user, $key)) {
+                $user->{$key} = $value;
+            }
+        }
+        return $user;
     }
 }
 ?>
