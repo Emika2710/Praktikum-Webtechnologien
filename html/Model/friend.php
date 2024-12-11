@@ -7,6 +7,7 @@ class Friend implements JsonSerializable {
     //Attribute
     private $username;
     private $status;
+    
     //Konstruktor
     public function __constructor($username) {
         $this->username = $username;
