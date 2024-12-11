@@ -2,7 +2,6 @@
 //Model/Friend.php
 namespace Model;
 
-
 namespace Model;
 use JsonSerializable;
 
