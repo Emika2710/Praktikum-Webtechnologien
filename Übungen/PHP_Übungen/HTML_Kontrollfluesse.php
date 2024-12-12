@@ -21,16 +21,16 @@
         }*/
     
     //Anweisung 3: Unterbrechen des PHP Blocks 
-    /*    foreach($list	as	$value)	{
-        ?>
-	<p><?php	echo	$value;	?></p>
+    /*foreach($list	as	$value)	{
+    ?>
+	<p><?php echo $value; ?></p>
 
 	<?php	
 	    }*/
 	?>
     <!--Anweisung 4: Vereinfachung der Augabe-->
     <?php foreach($list as $value){ ?>
-    <p><?echo $value; ?></p>
+    <p><?php echo $value; ?></p>
     <?php }?>
 
 </body>
