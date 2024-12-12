@@ -19,6 +19,7 @@ class User implements JsonSerializable{
     public function getUsername() {
         return $this->username;
     }
+    
     public static function fromJson($data) {
         $user = new self();   // Erzeugt eine neue Instanz der Klasse User
         foreach($data as $key => $value) {

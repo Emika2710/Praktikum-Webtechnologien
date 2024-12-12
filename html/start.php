@@ -13,5 +13,6 @@
     define('CHAT_SERVER_ID', 'f3630146-151d-41a7-a0bb-fd844a6cdebc'); # Ihre Collection ID
 
     session_start();
+    $service= new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 
 ?>
