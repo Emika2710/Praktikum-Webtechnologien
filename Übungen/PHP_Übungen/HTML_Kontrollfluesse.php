@@ -14,10 +14,25 @@
     <?php
     //Anweisung 1: Liste irgendwie ausgeben
     //var_dump($list);
-    foreach($list as $value) {
+
+    //Anweisung 2: die Liste ordentlich anzugeben
+    /*foreach($list as $value) {
         echo "<p>".$value."</p>";
-        }
+        }*/
+    
+    //Anweisung 3: Unterbrechen des PHP Blocks 
+    /*foreach($list	as	$value)	{
     ?>
+	<p><?php echo $value; ?></p>
+
+	<?php	
+	    }*/
+	?>
+    <!--Anweisung 4: Vereinfachung der Augabe-->
+    <?php foreach($list as $value){ ?>
+    <p><?php echo $value; ?></p>
+    <?php }?>
+
 </body>
 <!--	...	-->
 
