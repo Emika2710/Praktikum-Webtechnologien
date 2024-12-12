@@ -5,7 +5,7 @@
     </head>
 
     <?php
-        header("Location: login.php");
+        header("Location: HTML_Kontrollfluesse.php");
     ?>
     <body>
         <p>Hallo, Welt!</p>

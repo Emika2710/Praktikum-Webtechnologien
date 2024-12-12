@@ -30,9 +30,9 @@
 	?>
     <!--Anweisung 4: Vereinfachung der Augabe-->
     <?php foreach($list as $value){ ?>
-    <p><?$value; ?></p>
+    <p><?echo $value; ?></p>
     <?php }?>
-    
+
 </body>
 <!--	...	-->
 
