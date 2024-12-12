@@ -12,6 +12,7 @@ cd C:\xampp
 ren htdocs htdocs.backup
 mklink /J C:\xampp\htdocs [Path to]\Praktikum
 ```
+Meli Path http://localhost/Webtechnologien/Praktikum-Webtechnologien/html/login.php
 
 #### run
 

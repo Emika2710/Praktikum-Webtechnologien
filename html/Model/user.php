@@ -4,15 +4,16 @@ use JsonSerializable;
 
 class User implements JsonSerializable{
     private $username;
-    //Implementation der Funktion für JsonSerializable
-    public	function	jsonSerialize():mixed	{
-        return	get_object_vars($this);
-        }
 
     // Konstruktor
     public function __constructor($username = null) {
         $this->username = $username;
     }
+    
+    //Implementation der Funktion für JsonSerializable
+    public	function	jsonSerialize():mixed	{
+        return	get_object_vars($this);
+        }
 
     // Getter-Funktion für das Attribut username
     public function getUsername() {
