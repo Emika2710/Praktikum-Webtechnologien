@@ -1,33 +1,36 @@
 <?php
+// Model/User.php
 namespace Model;
 use JsonSerializable;
-
-class User implements JsonSerializable{
+class User implements JsonSerializable {
     private $username;
-
-    // Konstruktor
-    public function __constructor($username = null) {
+    private $foo;
+    public function __construct($username)
+    {
         $this->username = $username;
     }
-    
-    //Implementation der Funktion für JsonSerializable
-    public	function	jsonSerialize():mixed	{
-        return	get_object_vars($this);
-        }
 
-    // Getter-Funktion für das Attribut username
     public function getUsername() {
         return $this->username;
     }
-    
+
+    public function getFoo() {
+        return $this->foo;
+    }
+
+    public function setFoo($value) {
+        $this->foo = $value;
+    }
+
+    public function jsonSerialize():mixed {
+        return get_object_vars($this);
+    }
+
     public static function fromJson($data) {
-        $user = new self();   // Erzeugt eine neue Instanz der Klasse User
-        foreach($data as $key => $value) {
-            if (property_exists($user, $key)) {
-                $user->{$key} = $value;
-            }
+        $user = new User("");
+        foreach ($data as $key => $value) {
+            $user->{$key} = $value;
         }
         return $user;
     }
 }
-?>

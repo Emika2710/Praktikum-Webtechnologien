@@ -155,6 +155,4 @@ class HttpClient {
         }
         throw new \Exception('Http status is ' . $status . ': ' . $result);
     }
-
-
 }
