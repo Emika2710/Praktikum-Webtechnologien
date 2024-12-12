@@ -8,11 +8,11 @@
     });
 
     //$service = new Utils\BackendService("https://online-lectures-cs.thi.de/chat/", "f00a3c26-3aa4-40c6-a772-5adebc4c3689");
-
+    session_start();
+    
     define('CHAT_SERVER_URL', 'https://online-lectures-cs.thi.de/chat/');
     define('CHAT_SERVER_ID', 'f3630146-151d-41a7-a0bb-fd844a6cdebc'); # Ihre Collection ID
 
-    session_start();
     $service= new Utils\BackendService(CHAT_SERVER_URL, CHAT_SERVER_ID);
 
 ?>

@@ -1,37 +1,41 @@
 <?php
-//Model/Friend.php
+// Model/User.php
 namespace Model;
 use JsonSerializable;
-
 class Friend implements JsonSerializable {
-    //Attribute
     private $username;
     private $status;
-    
-    //Konstruktor
-    public function __constructor($username) {
+    private $unread;
+    public function __construct($username)
+    {
         $this->username = $username;
     }
 
-    //Implementation der Funktion für JsonSerializable
-    public function jsonSerialize():mixed {
-        return	get_object_vars($this);
-    }
-
-    //Methoden, die den Zustand auf accepted bzw. dismissed setzen
-    public function setAccepted(){
-        $this->status = 'accepted';
-    }
-    public function setDismissed(){
-        $this->status = 'dismissed';
-    }
-
-    //Getter
     public function getUsername() {
         return $this->username;
     }
+
+    public function getUnread() {
+        return $this->unread;
+    }
+
     public function getStatus() {
         return $this->status;
     }
+
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+
+    public function jsonSerialize():mixed {
+        return get_object_vars($this);
+    }
+
+    public static function fromJson($data) {
+        $friend = new Friend("");
+        foreach ($data as $key => $value) {
+            $friend->{$key} = $value;
+        }
+        return $friend;
+    }
 }
-?>
