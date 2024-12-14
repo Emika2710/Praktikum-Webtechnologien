@@ -34,31 +34,67 @@ $_POST['test']; } ?>">
             <input type="submit" value="Create Account" class="create-account">
             <button class="button" name="action" value="register">Create Account</button>
         </div>
+        
+        
         <?php
 
-            $username = $_POST["User"];
-            $password = $_POST["Passwort"];
-            $confirm = $_POST["Confirm"];
+        $errorName = "";
+        $errorPassword = "";
+        $username = "";
+        $password = "";
+        $confirm = "";
 
-            if($username != null && strlen($username) >= 3 && !$service->userExists($username)){
+        // Wenn das Formular abgeschickt wurde
+        if (isset($_POST["action"]) && $_POST["action"] == "register") {
 
-                if($password != null && strlen($password) >= 8 && $password == $confirm){
-                    // neuer User
+            // Validierung
+            if(!isset($_POST["User"]) || empty($_POST["User"])){
+                $errorName = "Bitte geben Sie einen Benutzernamen ein.";
+            } else{
+                $username = $_POST["User"];
+            }
 
-                    if($service->register($username, $password)){
-                        $_SESSION['user'] = $username;
-                        // Warum wird user nicht in die Session geschrieben?
-                        
-                        header("Location: friendlist.php");
-                    }
-                }
-                else{
-                        //TODO: Error Message Password
+            if(!isset($_POST["Passwort"]) || empty($_POST["Passwort"])){
+                $errorPassword = "Bitte geben Sie ein Passwort ein.";
+            } else{
+                $password = $_POST["Passwort"];
+            }
+
+            if(!isset($_POST["Confirm"]) || empty($_POST["Confirm"])){
+                $errorPassword = "Bitte bestätigen Sie Ihr Passwort.";
+            } else{
+                $confirm = $_POST["Confirm"];
+            }
+
+            // Username überprüfen
+            if(strlen($username) <= 3){
+                $errorName = "Der Benutzername muss mindestens 3 Zeichen lang sein.";
+            }
+            if($service->userExists($username)){
+                $errorName = "Der Benutzername ist bereits vergeben.";
+            }
+
+            // Passwort überprüfen
+            if(strlen($password) < 8){
+                $errorPassword = "Das Passwort muss mindestens 8 Zeichen lang sein.";
+            }
+            if($password != $confirm){
+                $errorPassword = "Die Passwörter stimmen nicht überein.";
+            }
+
+            // Wenn keine Fehler aufgetreten sind
+            if(empty($errorName) && empty($errorPassword)){
+
+                // Benutzer registrieren
+                if($service->register($username, $password)){
+                    //echo "Benutzer wurde erfolgreich registriert.";
+                    $_SESSION['user'] = $username;
+                    //echo $_SESSION['user'];
+                    // Warum wird user nicht in die Session geschrieben?
+                    
+                    header("Location: friendlist.php");
                 }
             }
-            else{
-                //TODO: Error Message Username
-
             }
         ?>
     </form>
