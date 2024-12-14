@@ -8,6 +8,28 @@
 </head>
 
 <body>
+    <?php 
+        //laden der start.php Datei
+        include 'start.php';
+
+        //Einbinden BackendService
+        include 'BackendService.php';
+
+        //Überprüfung, ob das Formular abgesendet wurde
+        if($_SERVER["REQUEST_METHOD"]=="GET"){
+            $username = $GET["User"];
+            $password = $GET["PW"];
+            $result = BackendService::login($username, $password);
+            if($result){
+                $_SESSION["user"] = $username;
+                header("Location: friends.php");
+                exit();
+            }else{
+                echo"<div class='error-message'>Fehler: Ungültiger Benutzername oder Passwort.</div>";
+            }
+        }
+    ?>
+
     <div class="flex">
         <img src="../images/chat.png" alt="Login Image" height="200px" width="200px">
     </div>
