@@ -21,7 +21,8 @@ require("start.php");
     <div class="title">
         Register
     </div>
-    <form class="flex" method="post">
+    <form class="flex" method="post" value="<?php if(isset($_POST['Username'])) { echo
+$_POST['test']; } ?>">
         <div class="form-container">
             <br>
             <label for="register_username">Username:</label> <input type="text" placeholder="Username" name="User" id="register_username"> <br>
@@ -34,6 +35,7 @@ require("start.php");
             <button class="button" name="action" value="register">Create Account</button>
         </div>
         <?php
+
             $username = $_POST["User"];
             $password = $_POST["Passwort"];
             $confirm = $_POST["Confirm"];
@@ -41,23 +43,23 @@ require("start.php");
             if($username != null && strlen($username) >= 3 && !$service->userExists($username)){
 
                 if($password != null && strlen($password) >= 8 && $password == $confirm){
-                    //register($username, $password);
+                    // neuer User
+
+                    // ICH WAR HIER -> er scheint hier nicht zu landen
 
                     if($service->register($username, $password)){
-                        $_SESSION["user"] = $username;
-
-                        // ICH WAR HIER -> er scheint hier nicht zu landen
-                        var_dump($username);
-                        var_dump($password);
-                        var_dump($user);
-                        //header("Location: friendlist.php");
+                        $_SESSION['user'] = $username;
+                        
+                        header("Location: friendlist.php");
                     }
                 }
                 else{
+                    echo "Password Error";
                     //TODO: Error Message Password
                 }
             }
             else{
+                echo "Username Error";
                 //TODO: Error Message Username
 
             }
