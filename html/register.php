@@ -45,21 +45,18 @@ $_POST['test']; } ?>">
                 if($password != null && strlen($password) >= 8 && $password == $confirm){
                     // neuer User
 
-                    // ICH WAR HIER -> er scheint hier nicht zu landen
-
                     if($service->register($username, $password)){
                         $_SESSION['user'] = $username;
+                        // Warum wird user nicht in die Session geschrieben?
                         
                         header("Location: friendlist.php");
                     }
                 }
                 else{
-                    echo "Password Error";
-                    //TODO: Error Message Password
+                        //TODO: Error Message Password
                 }
             }
             else{
-                echo "Username Error";
                 //TODO: Error Message Username
 
             }
