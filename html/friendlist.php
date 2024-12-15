@@ -36,6 +36,9 @@
     </form>
 
     <script src="main.js"></script>
+    <?php
+    var_dump($user);
+    ?>
     <script>
         loadFriendList();
     </script>

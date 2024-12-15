@@ -21,7 +21,8 @@ require("start.php");
     <div class="title">
         Register
     </div>
-    <form class="flex" method="post">
+    <form class="flex" method="post" value="<?php if(isset($_POST['Username'])) { echo
+$_POST['test']; } ?>">
         <div class="form-container">
             <br>
             <label for="register_username">Username:</label> <input type="text" placeholder="Username" name="User" id="register_username"> <br>
@@ -33,33 +34,67 @@ require("start.php");
             <input type="submit" value="Create Account" class="create-account">
             <button class="button" name="action" value="register">Create Account</button>
         </div>
+        
+        
         <?php
-            $username = $_POST["User"];
-            $password = $_POST["Passwort"];
-            $confirm = $_POST["Confirm"];
 
-            if($username != null && strlen($username) >= 3 && !$service->userExists($username)){
+        $errorName = "";
+        $errorPassword = "";
+        $username = "";
+        $password = "";
+        $confirm = "";
 
-                if($password != null && strlen($password) >= 8 && $password == $confirm){
-                    //register($username, $password);
+        // Wenn das Formular abgeschickt wurde
+        if (isset($_POST["action"]) && $_POST["action"] == "register") {
 
-                    if($service->register($username, $password)){
-                        $_SESSION["user"] = $username;
+            // Validierung
+            if(!isset($_POST["User"]) || empty($_POST["User"])){
+                $errorName = "Bitte geben Sie einen Benutzernamen ein.";
+            } else{
+                $username = $_POST["User"];
+            }
 
-                        // ICH WAR HIER -> er scheint hier nicht zu landen
-                        var_dump($username);
-                        var_dump($password);
-                        var_dump($user);
-                        //header("Location: friendlist.php");
-                    }
-                }
-                else{
-                    //TODO: Error Message Password
+            if(!isset($_POST["Passwort"]) || empty($_POST["Passwort"])){
+                $errorPassword = "Bitte geben Sie ein Passwort ein.";
+            } else{
+                $password = $_POST["Passwort"];
+            }
+
+            if(!isset($_POST["Confirm"]) || empty($_POST["Confirm"])){
+                $errorPassword = "Bitte bestätigen Sie Ihr Passwort.";
+            } else{
+                $confirm = $_POST["Confirm"];
+            }
+
+            // Username überprüfen
+            if(strlen($username) <= 3){
+                $errorName = "Der Benutzername muss mindestens 3 Zeichen lang sein.";
+            }
+            if($service->userExists($username)){
+                $errorName = "Der Benutzername ist bereits vergeben.";
+            }
+
+            // Passwort überprüfen
+            if(strlen($password) < 8){
+                $errorPassword = "Das Passwort muss mindestens 8 Zeichen lang sein.";
+            }
+            if($password != $confirm){
+                $errorPassword = "Die Passwörter stimmen nicht überein.";
+            }
+
+            // Wenn keine Fehler aufgetreten sind
+            if(empty($errorName) && empty($errorPassword)){
+
+                // Benutzer registrieren
+                if($service->register($username, $password)){
+                    //echo "Benutzer wurde erfolgreich registriert.";
+                    $_SESSION['user'] = $username;
+                    //echo $_SESSION['user'];
+                    // Warum wird user nicht in die Session geschrieben?
+                    
+                    header("Location: friendlist.php");
                 }
             }
-            else{
-                //TODO: Error Message Username
-
             }
         ?>
     </form>
