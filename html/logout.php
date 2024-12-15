@@ -9,7 +9,7 @@
 
 <body>
     <?php
-        include("start.php");
+        require "start.php";
         session_unset();
     ?>
     <div class="flex">

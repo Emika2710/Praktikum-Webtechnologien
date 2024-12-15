@@ -39,11 +39,7 @@
     <hr>
     <form>
         <input type="text" placeholder="Add Friend to List"></input>
-        <input type="submit" value="Add" action="
-        <?php
-        include_once ("Utils/Backendservice.php");
-        Utils/Backendservice::friendRequest();
-        ?>"></input>
+        <input type="submit" value="Add"></input>
     </form>
 
     <script src="main.js"></script>

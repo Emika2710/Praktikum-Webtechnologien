@@ -1,5 +1,5 @@
 <?php
-require("start.php");
+require "start.php";
 ?>
 
 <!DOCTYPE html>

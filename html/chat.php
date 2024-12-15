@@ -8,6 +8,9 @@
 </head>
 
 <body>
+<?php
+        require "start.php";
+    ?>
     <h1>Chat with Tom</h1>
     <p class="title">
         <a href="friendlist.php">
