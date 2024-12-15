@@ -28,7 +28,7 @@ class BackendService{
      * @param $username string mit dem username
      * @param $password string mit dem password
      */
-    /*public function login($username, $password){
+    public function login($username, $password){
         try{
             $result = HttpClient::post($this->link . "/login", array(
                 "username" => $username,
@@ -40,24 +40,8 @@ class BackendService{
             error_log($e);
         }
         return false;
-    }*/
-    public function login($username, $password){
-    try{
-        $result = HttpClient::post($this->link . "/login", array(
-            "username" => $username,
-            "password" => $password
-        ));
-        //Prüfen ob $result gültig ist und einen Token enthält
-        if($result && isset($result->token)){
-            $_SESSION["chat_token"] = $result->token;
-            return true;
-        }
-
-    }catch (\Exception $e){
-        error_log($e);
     }
-    return false;
-}
+    
     /**
      * Registriert einen neuen Benutzer mit Benutername und Passwort.
      * Der neue Benutzer wird eingeloggt, zudem wird das erhaltene Token 

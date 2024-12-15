@@ -10,7 +10,10 @@
 <body>
     <?php 
         //Starten von start.php und Backendservice
-        include("start.php");
+        require "start.php";
+        if(isset($_SESSION['user'])){
+            header("Location: friends.php");
+        };
     ?>
 
     <div class="flex">
@@ -28,8 +31,8 @@
         </div>
         <div class="form-buttons">
             <a href="register.php">Register</a>
-            <input type="submit" value="Login">
             <?php 
+                //Hier ist ein Fehler, dass die SESSION Variable nicht mit dem User belegt wird, weil ich werde nicht auf Friendlist weitergeleitet
                 //Verarbeiten der Formularfelder für Nutzername und Passwort
                     if(isset($_POST["data"])){
                         $username = $_POST["username"];
@@ -49,10 +52,9 @@
                         } else {
                             echo "Fehler bei Passwort oder Nutzername";
                         }
-
                     }
-                    
                 ?>
+            <input type="submit" value="Login">
         </div>
 
     </form>

@@ -11,7 +11,7 @@ function getChatpartner() {
     return friendValue;
 }
 
-// Freundesliste mit nachrichten darstellen 
+// Freundesliste mit Nachrichten darstellen 
 function updateFriends(data) {
 
     let ul = document.getElementById("friendslist");
@@ -73,7 +73,7 @@ function updateFriends(data) {
 }
 
 
-// Friendlist sauber laden
+// Friendlist laden
 function loadFriendList() {
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -83,9 +83,8 @@ function loadFriendList() {
             updateFriends(data);
         }
     };
-    xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/a21f6c70-a791-43f3-8b05-fb459645f47a/friend", true);
-    xmlhttp.setRequestHeader('Content-type', 'application/json');
-    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjAzMDc3fQ.KGI9SdwBqsh2yDyGaRjcKDC8CCGCfHxUhXrxNMs06Kc');
+    xmlhttp.open("GET", "ajax_load_friends.php", true); // URL geändert
+    // Token und Content-type Header entfernt
     xmlhttp.send();
 };
 

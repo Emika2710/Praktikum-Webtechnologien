@@ -8,6 +8,13 @@
 </head>
 
 <body>
+    <?php
+        //Starten von start.php und Backendservice
+        require "start.php";
+        /*if(!isset($_SESSION['user'])){
+            header("Location: login.php");
+        };*/
+    ?>
 
     <h1>Friends</h1>
     <div class="title">
