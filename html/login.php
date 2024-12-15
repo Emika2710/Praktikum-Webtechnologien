@@ -10,15 +10,16 @@
 <body>
     <?php 
         //laden der start.php Datei
-        include 'start.php';
+        include ('start.php');
 
         //Einbinden BackendService
-        include 'Utils\BackendService.php';
+        include_once ('Utils\BackendService.php');
 
         //Überprüfung, ob das Formular abgesendet wurde
         if($_SERVER["REQUEST_METHOD"]=="GET"){
             $username = $_GET["User"];
-            $password = $_GET["PW"];
+            $password = $_GET["Password"];
+    
             // Erstellung einer Instanz der Klasse BackendService (es gab Probleme beim statischen Aufruf einer nicht statischen Methode)
             $backendService = new Utils\BackendService($username,$password);
 
