@@ -13,13 +13,18 @@
         include 'start.php';
 
         //Einbinden BackendService
-        include 'BackendService.php';
+        include 'Utils\BackendService.php';
 
         //Überprüfung, ob das Formular abgesendet wurde
         if($_SERVER["REQUEST_METHOD"]=="GET"){
-            $username = $GET["User"];
-            $password = $GET["PW"];
-            $result = BackendService::login($username, $password);
+            $username = $_GET["User"];
+            $password = $_GET["PW"];
+            // Erstellung einer Instanz der Klasse BackendService (es gab Probleme beim statischen Aufruf einer nicht statischen Methode)
+            $backendService = new Utils\BackendService($username,$password);
+
+            // Nicht-statischer Aufruf der login Methode
+            $result = $backendService->login($username, $password);
+
             if($result){
                 $_SESSION["user"] = $username;
                 header("Location: friends.php");

@@ -106,7 +106,7 @@ class BackendService{
         } catch(\Exception $e){
             error_log($e);
         }
-        return false;
+        return [];
     }
     /**
      * Lädt alle Freunde des aktuellen Benutzers.
@@ -124,7 +124,7 @@ class BackendService{
         } catch(\Exception $e){
             error_log($e);
         }
-        return false;
+        return [];
     }
 
     /**
@@ -238,8 +238,8 @@ class BackendService{
     /**
      * Liefert die Liste der Freund mit der Anzahl ungelesener Nachrichten 
      * zu jedem Freund.
-     * @see https://online-lectures-cs.thi.de/chat/full#unread
-     * @return Nachrichtenliste oder false bei Fehler
+     * https://online-lectures-cs.thi.de/chat/full#unread
+     * Nachrichtenliste oder false bei Fehler
      */
     public function getUnread(){
         try{
