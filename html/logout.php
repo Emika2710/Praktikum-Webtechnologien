@@ -8,6 +8,10 @@
 </head>
 
 <body>
+    <?php
+        include("start.php");
+        include("session_unset");
+    ?>
     <div class="flex">
         <img src="../images/logout.png" alt="Logout Image" height="200px" width="200px">
     </div>

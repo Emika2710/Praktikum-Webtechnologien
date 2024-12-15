@@ -9,31 +9,8 @@
 
 <body>
     <?php 
-        //laden der start.php Datei
-        include ('start.php');
-
-        //Einbinden BackendService
-        include_once ('Utils\BackendService.php');
-
-        //Überprüfung, ob das Formular abgesendet wurde
-        if($_SERVER["REQUEST_METHOD"]=="GET"){
-            $username = $_GET["User"];
-            $password = $_GET["Password"];
-    
-            // Erstellung einer Instanz der Klasse BackendService (es gab Probleme beim statischen Aufruf einer nicht statischen Methode)
-            $backendService = new Utils\BackendService($username,$password);
-
-            // Nicht-statischer Aufruf der login Methode
-            $result = $backendService->login($username, $password);
-
-            if($result){
-                $_SESSION["user"] = $username;
-                header("Location: friends.php");
-                exit();
-            }else{
-                echo"<div class='error-message'>Fehler: Ungültiger Benutzername oder Passwort.</div>";
-            }
-        }
+        //Starten von start.php und Backendservice
+        include("start.php");
     ?>
 
     <div class="flex">
@@ -52,6 +29,13 @@
         <div class="form-buttons">
             <a href="register.php">Register</a>
             <input type="submit" value="Login">
+            <?php 
+                //Verarbeiten der Formularfelder für Nutzername und Passwort
+                    if(isset($_POST)){
+
+                    }
+                    //include("Utils/Backendservice,php");
+                ?>
         </div>
 
     </form>
