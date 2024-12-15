@@ -31,10 +31,27 @@
             <input type="submit" value="Login">
             <?php 
                 //Verarbeiten der Formularfelder für Nutzername und Passwort
-                    if(isset($_POST)){
+                    if(isset($_POST["data"])){
+                        $username = $_POST["username"];
+                        $password = $_POST["password"];
+
+                        //Aufrufen der login Methode im BackendService
+                        include_once ("Utils/Backendservice.php");
+                        
+                        //Ausführen von login (Methode sie nicht Statisch aufzurufen, weil es sonst einen Fehler geworfen hätte)
+                        $backendService = new Utils\BackendService($_POST["username"], $_POST["password"]);
+                        $correctUser = $backendService->login($_POST["username"], $_POST["password"]);
+
+                        if($correctUser == true){
+                            $_SESSION["user"] = $username;
+                            header("Location: friends.php");
+                            exit();
+                        } else {
+                            echo "Fehler bei Passwort oder Nutzername";
+                        }
 
                     }
-                    //include("Utils/Backendservice,php");
+                    
                 ?>
         </div>
 
