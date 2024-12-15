@@ -47,7 +47,7 @@
 
                         if($correctUser == true){
                             $_SESSION["user"] = $username;
-                            
+                            var_dump($_SESSION["user"]);
                             header("Location: friends.php");
                             exit();
                         } else {
