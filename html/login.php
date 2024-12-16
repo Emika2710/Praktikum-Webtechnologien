@@ -43,7 +43,7 @@
                         
                         $correctUser = $service->login($username, $password);
 
-                        //egal, ob ich diese Funktion ausklammere oder nicht, ich werde auf die Standard Seite weiter geleitet.
+                        //egal, ob ich diese Funktion ausklammere oder nicht, ich werde auf die Standard-Seite weiter geleitet.
                         if($correctUser == true && $userExists == true){
                             $_SESSION['user'] = $username;
                             header("Location: friends.php");
