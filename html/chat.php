@@ -31,19 +31,6 @@
             http_response_code(400); // bad request
             return;
         }
-        
-        $to = $_GET['to'];
-        // Nachrichten zwischen aktuellem Benutzer und "$to" laden
-        $messages = $service->loadMessages($to);
-        
-        if (!$messages) {
-            // Fehler aufgetreten: leeres Array senden, damit der Client immer
-            // ein Array zum Anzeigen hat
-            $messages = array();
-        }
-        // Nachrichten im JSON-Format senden
-        echo json_encode($messages);
-        http_response_code(200);
     ?>
     
     <h1>Chat with <?php echo $friend; ?></h1>
