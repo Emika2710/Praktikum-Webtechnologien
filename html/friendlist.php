@@ -9,7 +9,6 @@
 
 <body>
     <?php
-        //Starten von start.php und Backendservice
         require "start.php";
     /*
         // Überprüfen, ob Login/ Register auch wirklich funktioniert
@@ -20,7 +19,7 @@
         } catch(\Exception $e) {
             echo "Authentification failed";
         }
-            */
+    */
         //ausgeben der Freundesliste über updateFriends, die das Array mit den Freunden erhält und ausgeben soll
         $friendList = $service->loadFriends();
         //updateFriends($friendlist);
@@ -56,12 +55,7 @@
     <input type="hidden" name="action" value="add"> <!-- action als verstecktes Feld -->
     <input type="submit" value="Add">
     <?php
-    /*Schritte: 
-    1. Freundschaftsanfragen annehmbar und ablehnbar machen (Friend Klasse nutzen)
-        1.1 Bedingung, dass der Button gedrückt wurde
-        1.2 $friend rausholen
-        1.2 friend Accept ausführen
-    */ 
+     
     //Neue Freundschaftsanfrage
     if (isset($_POST["action"]) && $_POST["action"] == "add") {
         // Auslesen der input Zeile
