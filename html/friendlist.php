@@ -119,8 +119,22 @@
         
     </form>
     <form method="post">
-        <input type="text" name="NewFriend" placeholder="Search for User">
+        <!--<input type="text" name="NewFriend" placeholder="Search for User"> -->
+
+
+        <input type="text" placeholder="Add Friend to List" name="NewFriend" id="friend-request-name" list="friend-selector">
+        <datalist id="friend-selector">
+            <?php
+            $userList = $service->loadUsers();
+            echo "<script>console.log(" . json_encode($userList) . ");</script>";
+
+            foreach($userList as $value) { ?>
+                <option><?= $value; ?></option>
+            <?php } ?>
+        </datalist>
         <input type="submit" name="action" value="Add">
+
+
     <?php
      
     //Neue Freundschaftsanfrage
@@ -131,6 +145,8 @@
 
         // prüfen, ob der Nutzer existiert
         if ($service->userExists($possibleFriend)) {
+
+            echo "<br>";
             echo "User exists! ";
             if(!$service->friendRequest($possibleFriend)){
                 echo "Failed to send friend request";
