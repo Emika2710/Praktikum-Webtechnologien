@@ -27,8 +27,9 @@
         } catch(\Exception $e) {
             echo "Authentification failed";
         }
+            */
         $friendList = $service->loadFriends();
-        */
+        
         // friendList in Console ausgeben
         echo "<script>console.log(" . json_encode($friendList) . ");</script>";
     ?>
