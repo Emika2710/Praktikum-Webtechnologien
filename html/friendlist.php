@@ -14,7 +14,9 @@
         /*if(!isset($_SESSION['user'])){
             header("Location: login.php");
         };*/ 
-        $service->loadFriends();         
+        $service->loadFriends();   
+    
+
         ?>
 
     <h1>Friends</h1>
