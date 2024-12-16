@@ -55,9 +55,9 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
             //echo "Benutzer wurde erfolgreich registriert.";
             $_SESSION['user'] = $username;
             $_SESSION['password'] = $password;
-            echo $_SESSION['user'];
             
             header("Location: friendlist.php");
+            exit();
         }
     }
     else{
@@ -70,12 +70,6 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
         if(!empty($errorConfirm)){
             echo $errorConfirm;
         }  
-    }
-    try {
-        $result = Utils\HttpClient::post("https://online-lectures-cs.thi.de/chat/a500ca45-ce5b-4f16-9d05-abf848edd0a3/register", array("username" => $username, "password" => $password));
-        echo "Token: " . $result->token;
-    } catch(\Exception $e) {
-        echo "Authentification failed";
     }
 }
 ?>

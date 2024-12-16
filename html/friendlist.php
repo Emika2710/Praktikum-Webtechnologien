@@ -19,14 +19,19 @@
         */
         //Starten von start.php und Backendservice
         require "start.php";
-        /*if(!isset($_SESSION['user'])){
-            header("Location: login.php");
-        };*/ 
-        $service->loadFriends();   
-        
-    
 
-        ?>
+        try {
+            $result = Utils\HttpClient::post("https://online-lectures-cs.thi.de/chat/a500ca45-ce5b-4f16-9d05-abf848edd0a3/login", 
+                array("username" => $_SESSION['user'], "password" => $_SESSION['password']));
+            echo "Token: " . $result->token;
+        } catch(\Exception $e) {
+            echo "Authentification failed";
+        }
+        $friendList = $service->loadFriends();
+
+        // friendList in Console ausgeben
+        echo "<script>console.log(" . json_encode($friendList) . ");</script>";
+    ?>
 
     <h1>Friends</h1>
     <div class="title">
@@ -58,10 +63,11 @@
     ?>
     </form>
 
-    <script src="main.js"></script>
+    <!--<script src="main.js"></script>
     <script>
         loadFriendList();
     </script>
+    -->
 </body>
 
 </html>
