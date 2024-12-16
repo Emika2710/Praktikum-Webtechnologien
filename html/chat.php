@@ -10,11 +10,15 @@
 <body>
 <?php
         require "start.php";
-        require "ajax_load_messages";
+        require "ajax_load_messages.php";
+        require "ajax_send_messages.php";
+
+        //Überprüfen ob Daten Stimmen
         if(!isset($_SESSION["user"])){
             header("Location: login.php");
             exit();
         }
+
         if (isset($_GET['friend']) && !empty(trim($_GET['friend']))) {
             $friend = htmlspecialchars($_GET['friend']);
             echo "Das Chat-Ziel ist: " .$friend;
@@ -22,8 +26,26 @@
             header("Location: friendlist.html");
             exit();
         }
+        //Was zum Teufel muss ich machen, damit der Chat wenigstens auftaucht??        
+        if (!isset($_GET['to'])) {
+            http_response_code(400); // bad request
+            return;
+        }
         
+        $to = $_GET['to'];
+        // Nachrichten zwischen aktuellem Benutzer und "$to" laden
+        $messages = $service->loadMessages($to);
+        
+        if (!$messages) {
+            // Fehler aufgetreten: leeres Array senden, damit der Client immer
+            // ein Array zum Anzeigen hat
+            $messages = array();
+        }
+        // Nachrichten im JSON-Format senden
+        echo json_encode($messages);
+        http_response_code(200);
     ?>
+    
     <h1>Chat with <?php echo $friend; ?></h1>
     <p class="title">
         <a href="friendlist.php">
