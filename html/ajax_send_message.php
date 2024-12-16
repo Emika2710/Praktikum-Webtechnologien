@@ -1,6 +1,6 @@
 <?php
 require "start.php";
-
+echo $_SESSION['user'];
 if (!isset($_SESSION['user'])) {
     http_response_code(401); // not authorized
     return;

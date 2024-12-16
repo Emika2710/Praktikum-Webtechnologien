@@ -3,6 +3,7 @@ window.backendUrl = "https://online-lectures-cs.thi.de/chat/f00a3c26-3aa4-40c6-a
 window.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmVycnkiLCJpYXQiOjE3MzIxOTI4OTh9.i4-FjUDMIaJ64B0kCXSX37yJgkl8Rm_t2ZSCawn5AFo";
 */
 // gibt Chatpartner name zurück (aus Vorgebe entnommen)
+/*
 function getChatpartner() {
     const url = new URL(window.location.href);
     //	Access the query parameters using searchParams
@@ -123,17 +124,17 @@ function loadFriendList() {
     xmlhttp.send();
 };
 */
-
 //Funktionen für den Chat
 function onChatLoad() {
-    let friend = getChatpartner();
+    //let friend = getChatpartner();
     let heading = document.getElementsByTagName("h1")[0];
     heading.innerText = "Chat with " + friend;
     loadChat();
-    setInterval(loadChat, 1000);
+    //setInterval(loadChat, 1000);
 }
 
 function loadChat() {
+    /*
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -152,8 +153,16 @@ function loadChat() {
     xmlhttp.open("GET", "https://online-lectures-cs.thi.de/chat/fe0874f3-946f-452d-b623-46c95cff6b52/message/" + getChatpartner(), true);
     xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjI1NDY0fQ.xhntKonXGqqHiVEDACeldiO597mhL9HPOVr4jnS3lIo');
     xmlhttp.send();
+    */
+   // ajax_load_messages.php aufrufen
+    fetch("ajax_load_messages.php")
+    .then(response => response.json())
+    .then(data => {
+        // Daten anzeigen
+        console.log(data);
+    });
 }
-
+/*
 //Senden einer Nachricht
 function sendMessage() {
     let messageElement = document.getElementById("message");
@@ -186,9 +195,10 @@ function loadFriends() {
     xmlhttp.setRequestHeader('Authorization', 'Bearer ' + window.token);
     xmlhttp.send();
 }
-
+/*
 window.setInterval(function () {
     loadFriends();
 }, 1000);
 
-loadFriends();
+//loadFriends();
+*/
