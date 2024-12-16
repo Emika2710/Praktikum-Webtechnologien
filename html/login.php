@@ -11,7 +11,6 @@
     <?php 
         //Starten von start.php und Backendservice
         require "start.php";
-        require_once "Utils/BackendService.php";
         if(isset($_SESSION['user'])){
             header("Location: friends.php");
             exit();
@@ -42,7 +41,9 @@
                         $password = $_POST["password"];
                         
                         $correctUser = $service->login($username, $password);
-                        if($correctUser == true){
+
+                        //egal, ob ich diese Funktion ausklammere oder nicht, ich werde auf die Standard Seite weiter geleitet.
+                        if($correctUser == true && $userExists == true){
                             $_SESSION['user'] = $username;
                             header("Location: friends.php");
                             exit();

@@ -11,10 +11,10 @@
     <?php
         //Starten von start.php und Backendservice
         require "start.php";
-        require_once "Utils/BackendService.php";
         /*if(!isset($_SESSION['user'])){
             header("Location: login.php");
-        };*/          
+        };*/ 
+        $service->loadFriends();         
         ?>
 
     <h1>Friends</h1>
@@ -41,6 +41,10 @@
     <form action="friendlist.php" method="post">
     <input type="text" placeholder="Search for User">
     <input type="submit" value="Add">
+    <?php 
+        //da muss was hin
+        
+    ?>
     </form>
 
     <script src="main.js"></script>
