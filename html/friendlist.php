@@ -23,6 +23,7 @@
             header("Location: login.php");
         };*/ 
         $service->loadFriends();   
+        
     
 
         ?>
