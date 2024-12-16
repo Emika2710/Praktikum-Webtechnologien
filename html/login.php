@@ -33,7 +33,7 @@
         </div>
         <div class="form-buttons">
             <a href="register.php">Register</a>
-            <input type="submit" value="Login" name="Login">
+            <input type="submit" value="Login" name="Login" method="post">
             <?php 
                 //Hier ist ein Fehler, dass die SESSION Variable nicht mit dem User belegt wird, weil ich werde nicht auf Friendlist weitergeleitet
                 //Verarbeiten der Formularfelder für Nutzername und Passwort
