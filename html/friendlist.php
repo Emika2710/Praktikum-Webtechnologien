@@ -9,6 +9,14 @@
 
 <body>
     <?php
+        /*zu nutzende Funktionen:
+        1. friendRequest($friend)
+        2. friendAccept($friend)
+        3. friendDismiss($friend)
+        4. removeFriend($friend)
+        5. userExists($username)
+        6. getUnread()
+        */
         //Starten von start.php und Backendservice
         require "start.php";
         /*if(!isset($_SESSION['user'])){
