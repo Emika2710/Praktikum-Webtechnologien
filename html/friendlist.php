@@ -26,7 +26,6 @@
     */
 
         // wie lade ich jetzt die Freunde in regelmäßigen Abständen neu?
-        //ausgeben der Freundesliste über updateFriends, die das Array mit den Freunden erhält und ausgeben soll
         $friendList = $service->loadFriends();
         //updateFriends($friendlist);
         
