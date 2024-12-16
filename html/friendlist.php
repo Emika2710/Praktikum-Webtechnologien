@@ -21,10 +21,8 @@
         /*if(!isset($_SESSION['user'])){
             header("Location: login.php");
         };*/ 
-        $service->loadFriends();   
-        
-    
-
+        //Das gibt ein Array namens Friends was ich speichern und ausgeben muss
+        $service->loadFriends();
         ?>
 
     <h1>Friends</h1>
@@ -59,7 +57,12 @@
     1. Freundschaftsanfragen annehmbar und ablehnbar machen (Friend Klasse nutzen)
         1.1 Bedingung, dass der Button gedrückt wurde
         1.2 $friend rausholen
-        1.2 friend Accept ausführen
+        1.3 friend Accept ausführen
+        Pseudocode: 
+        if(isset($_POST["button") && $_POST["button"] == pushed){
+            $friend = ;
+            $backend->friendAccept($friend);
+        }
     */ 
     //Neue Freundschaftsanfrage
     if (isset($_POST["action"]) && $_POST["action"] == "add") {
@@ -69,18 +72,14 @@
         // prüfen, ob der Nutzer existiert
         if ($service->userExists($possibleFriend)) {
             $service->friendAccept($possibleFriend);
-            echo "Friend request sent to $possibleFriend!";
+            echo "Friend request sent to $possibleFriend";
         } else {
             echo "This User doesn't exist";
         }
     }
     ?>
     </form>
-
     <script src="main.js"></script>
-    <script>
-        loadFriendList();
-    </script>
 </body>
 
 </html>
