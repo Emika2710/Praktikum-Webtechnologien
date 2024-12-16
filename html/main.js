@@ -72,6 +72,40 @@ function updateFriends(data) {
         }
     }
 }
+//Versuch für Accept und Reject
+    /*document.addEventListener("click", function(event) {
+        if (event.target && event.target.id === "friendlist_accept") {
+            let friendName = event.target.closest("li").querySelector("b").innerText;
+    
+            // AJAX-Request für "Accept"
+            fetch("friendlist.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `action=accept&friend=${encodeURIComponent(friendName)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // Serverantwort anzeigen
+                location.reload(); // Optional, Seite neu laden
+            });
+        }
+    
+        if (event.target && event.target.id === "friendlist_decline") {
+            let friendName = event.target.closest("li").querySelector("b").innerText;
+    
+            // AJAX-Request für "Decline"
+            fetch("friendlist.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `action=decline&friend=${encodeURIComponent(friendName)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // Serverantwort anzeigen
+                location.reload(); // Optional, Seite neu laden
+            });
+        }
+    });*/
 
 /*
 // Friendlist laden

@@ -9,14 +9,6 @@
 
 <body>
     <?php
-        /*zu nutzende Funktionen:
-        1. friendRequest($friend)
-        2. friendAccept($friend)
-        3. friendDismiss($friend)
-        4. removeFriend($friend)
-        5. userExists($username)
-        */
-        //Starten von start.php und Backendservice
         require "start.php";
         if(!isset($_SESSION['user'])) {
             header("Location: login.php");
@@ -31,10 +23,12 @@
         } catch(\Exception $e) {
             echo "Authentification failed";
         }
-            */
+    */
 
         // wie lade ich jetzt die Freunde in regelmäßigen Abständen neu?
+        //ausgeben der Freundesliste über updateFriends, die das Array mit den Freunden erhält und ausgeben soll
         $friendList = $service->loadFriends();
+        //updateFriends($friendlist);
         
         // friendList in Console ausgeben
         echo "<script>console.log(" . json_encode($friendList) . ");</script>";
@@ -46,7 +40,6 @@
             $service->friendAccept($friend);
         }
     ?>
-
 
     <h1>Friends</h1>
     <div class="title">
@@ -91,12 +84,7 @@
     <input type="hidden" name="action" value="add"> <!-- action als verstecktes Feld -->
     <input type="submit" value="Add">
     <?php
-    /*Schritte: 
-    1. Freundschaftsanfragen annehmbar und ablehnbar machen (Friend Klasse nutzen)
-        1.1 Bedingung, dass der Button gedrückt wurde
-        1.2 $friend rausholen
-        1.2 friend Accept ausführen
-    */ 
+     
     //Neue Freundschaftsanfrage
     if (isset($_POST["action"]) && $_POST["action"] == "add") {
         // Auslesen der input Zeile
@@ -110,6 +98,30 @@
             echo "This User doesn't exist";
         }
     }
+    ?>
+    <?php 
+    //Versuch für Accept und Reject
+    /*if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && isset($_POST['friend'])) {
+        $action = $_POST['action'];
+        $friend = $_POST['friend'];
+    
+        if ($action === "accept") {
+            if ($service->friendAccept($friend)) {
+                echo json_encode(["status" => "success", "message" => "Friend request accepted."]);
+            } else {
+                echo json_encode(["status" => "error", "message" => "Failed to accept friend request."]);
+            }
+        } elseif ($action === "decline") {
+            if ($service->friendDismiss($friend)) {
+                echo json_encode(["status" => "success", "message" => "Friend request declined."]);
+            } else {
+                echo json_encode(["status" => "error", "message" => "Failed to decline friend request."]);
+            }
+        } else {
+            echo json_encode(["status" => "error", "message" => "Invalid action."]);
+        }
+        exit();
+    }*/
     ?>
     </form>
 
