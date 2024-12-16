@@ -1,6 +1,7 @@
+/*
 window.backendUrl = "https://online-lectures-cs.thi.de/chat/f00a3c26-3aa4-40c6-a772-5adebc4c3689";
 window.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmVycnkiLCJpYXQiOjE3MzIxOTI4OTh9.i4-FjUDMIaJ64B0kCXSX37yJgkl8Rm_t2ZSCawn5AFo";
-
+*/
 // gibt Chatpartner name zurück (aus Vorgebe entnommen)
 function getChatpartner() {
     const url = new URL(window.location.href);
@@ -106,7 +107,7 @@ function updateFriends(data) {
         }
     });*/
 
-
+/*
 // Friendlist laden
 function loadFriendList() {
     let xmlhttp = new XMLHttpRequest();
@@ -121,6 +122,7 @@ function loadFriendList() {
     // Token und Content-type Header entfernt
     xmlhttp.send();
 };
+*/
 
 //Funktionen für den Chat
 function onChatLoad() {
