@@ -10,8 +10,30 @@
 <body>
 <?php
         require "start.php";
+        require "ajax_load_messages.php";
+        require "ajax_send_messages.php";
+
+        //Überprüfen ob Daten Stimmen
+        if(!isset($_SESSION["user"])){
+            header("Location: login.php");
+            exit();
+        }
+
+        if (isset($_GET['friend']) && !empty(trim($_GET['friend']))) {
+            $friend = htmlspecialchars($_GET['friend']);
+            echo "Das Chat-Ziel ist: " .$friend;
+        } else {
+            header("Location: friendlist.html");
+            exit();
+        }
+        //Was zum Teufel muss ich machen, damit der Chat wenigstens auftaucht??        
+        if (!isset($_GET['to'])) {
+            http_response_code(400); // bad request
+            return;
+        }
     ?>
-    <h1>Chat with Tom</h1>
+    
+    <h1>Chat with <?php echo $friend; ?></h1>
     <p class="title">
         <a href="friendlist.php">
             &lt;back </a>|
