@@ -11,8 +11,10 @@
     <?php 
         //Starten von start.php und Backendservice
         require "start.php";
+        require_once "Utils/BackendService.php";
         if(isset($_SESSION['user'])){
             header("Location: friends.php");
+            exit();
         };
     ?>
 
@@ -21,33 +23,27 @@
     </div>
     <h1>Please sign in!</h1>
     <div class="title"> Login </div>
-    <form class="flex" action="friendlist.php" method="get">
+    <form class="flex" action="friendlist.php" method="post">
         <div class="form-container">
             <br>
-            <label for="login_username">Username:</label><input type="text" placeholder="Username" name="User"
+            <label for="login_username">Username:</label><input type="text" placeholder="Username" name="Username"
                 id="login_username">
-            <label for="login_passwort">Passwort:</label><input type="text" placeholder="Password" name="PW"
+            <label for="login_passwort">Passwort:</label><input type="text" placeholder="Password" name="Password"
                 id="login_passwort">
         </div>
         <div class="form-buttons">
             <a href="register.php">Register</a>
+            <input type="submit" value="Login" name="Login">
             <?php 
                 //Hier ist ein Fehler, dass die SESSION Variable nicht mit dem User belegt wird, weil ich werde nicht auf Friendlist weitergeleitet
                 //Verarbeiten der Formularfelder für Nutzername und Passwort
-                    if(isset($_POST["data"])){
+                    if(isset($_POST["Login"])){
                         $username = $_POST["username"];
                         $password = $_POST["password"];
-
-                        //Aufrufen der login Methode im BackendService
-                        include_once ("Utils/Backendservice.php");
                         
-                        //Ausführen von login (Methode sie nicht Statisch aufzurufen, weil es sonst einen Fehler geworfen hätte)
-                        $backendService = new Utils\BackendService($_POST["username"], $_POST["password"]);
-                        $correctUser = $backendService->login($_POST["username"], $_POST["password"]);
-
+                        $correctUser = $service->login($username, $password);
                         if($correctUser == true){
-                            $_SESSION["user"] = $username;
-                            var_dump($_SESSION["user"]);
+                            $_SESSION['user'] = $username;
                             header("Location: friends.php");
                             exit();
                         } else {
@@ -55,7 +51,6 @@
                         }
                     }
                 ?>
-            <input type="submit" value="Login">
         </div>
 
     </form>

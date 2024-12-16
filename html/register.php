@@ -95,7 +95,7 @@ $_POST['test']; } ?>">
                     header("Location: friendlist.php");
                 }
             }
-            }
+        }
         ?>
     </form>
 

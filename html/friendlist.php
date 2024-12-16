@@ -11,10 +11,11 @@
     <?php
         //Starten von start.php und Backendservice
         require "start.php";
+        require_once "Utils/BackendService.php";
         /*if(!isset($_SESSION['user'])){
             header("Location: login.php");
-        };*/
-    ?>
+        };*/          
+        ?>
 
     <h1>Friends</h1>
     <div class="title">
@@ -32,20 +33,17 @@
 
     <form class="flex" action="friendlist.php" method="get">
         <div class="form-list" >
-            <ol id="requests">
-            </ol>
+        <ol id="requests">
+        </ol>
         </div>
     </form>
     <hr>
-    <form>
-        <input type="text" placeholder="Add Friend to List"></input>
-        <input type="submit" value="Add"></input>
+    <form action="friendlist.php" method="post">
+    <input type="text" placeholder="Search for User">
+    <input type="submit" value="Add">
     </form>
 
     <script src="main.js"></script>
-    <?php
-    var_dump($user);
-    ?>
     <script>
         loadFriendList();
     </script>
