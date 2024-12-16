@@ -15,7 +15,6 @@
         3. friendDismiss($friend)
         4. removeFriend($friend)
         5. userExists($username)
-        6. getUnread()
         */
         //Starten von start.php und Backendservice
         require "start.php";
@@ -54,12 +53,32 @@
         </div>
     </form>
     <hr>
-    <form action="friendlist.php" method="post">
-    <input type="text" placeholder="Search for User">
-    <input type="submit" value="Add">
-    <?php 
-        //da muss was hin
         
+    </form>
+    <form action="friendlist.php" method="post">
+    <input type="text" name="possibleFriend" placeholder="Search for User">
+    <input type="hidden" name="action" value="add"> <!-- action als verstecktes Feld -->
+    <input type="submit" value="Add">
+    <?php
+    /*Schritte: 
+    1. Freundschaftsanfragen annehmbar und ablehnbar machen (Friend Klasse nutzen)
+        1.1 Bedingung, dass der Button gedrückt wurde
+        1.2 $friend rausholen
+        1.2 friend Accept ausführen
+    */ 
+    //Neue Freundschaftsanfrage
+    if (isset($_POST["action"]) && $_POST["action"] == "add") {
+        // Auslesen der input Zeile
+        $possibleFriend = isset($_POST["possibleFriend"]) ? $_POST["possibleFriend"] : "";
+        
+        // prüfen, ob der Nutzer existiert
+        if ($service->userExists($possibleFriend)) {
+            $service->friendAccept($possibleFriend);
+            echo "Friend request sent to $possibleFriend!";
+        } else {
+            echo "This User doesn't exist";
+        }
+    }
     ?>
     </form>
 
