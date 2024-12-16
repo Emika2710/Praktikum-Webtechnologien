@@ -11,6 +11,7 @@
     <?php 
         //Starten von start.php und Backendservice
         require "start.php";
+
         if(isset($_SESSION['user'])){
             header("Location: friends.php");
             exit();
@@ -34,7 +35,7 @@
             <a href="register.php">Register</a>
             <input type="submit" value="Login" name="Login" method="post">
             <?php 
-                //Hier ist ein Fehler, dass die SESSION Variable nicht mit dem User belegt wird, weil ich werde nicht auf Friendlist weitergeleitet
+                //Hier ist ein Fehler, dass die SESSION Variable nicht mit dem User belegt wird
                 //Verarbeiten der Formularfelder für Nutzername und Passwort
                     if(isset($_POST["Login"])){
                         $username = $_POST["username"];
