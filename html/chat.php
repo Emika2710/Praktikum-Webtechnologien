@@ -10,6 +10,17 @@
 <body>
 <?php
         require "start.php";
+        if(!isset($_SESSION["user"])){
+            header("Location: login.php");
+            exit();
+        }
+        if (isset($_GET['friend']) && !empty(trim($_GET['friend']))) {
+            $friend = htmlspecialchars($_GET['friend']);
+            echo "Das Chat-Ziel ist: " . $friend;
+        } else {
+            header("Location: friendlist.html");
+            exit();
+        }
     ?>
     <h1>Chat with Tom</h1>
     <p class="title">
