@@ -33,10 +33,50 @@
         echo "<script>console.log(" . json_encode($friendList) . ");</script>";
 
         // Bei friend_accept wird der Freund akzeptiert
-        if (isset($_POST["action"]) && $_POST["action"] == "friendlist_accept") {
+        /*
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && isset($_POST['friend'])) {
+            
+            $action = $_POST['action'];
+            $friend = $_POST['friend'];
+        
+            if ($action === "accept") {
+                if ($service->friendAccept($friend)) {
+                    echo json_encode(["status" => "success", "message" => "Friend request accepted."]);
+                } else {
+                    echo json_encode(["status" => "error", "message" => "Failed to accept friend request."]);
+                }
+            } elseif ($action === "decline") {
+                if ($service->friendDismiss($friend)) {
+                    echo json_encode(["status" => "success", "message" => "Friend request declined."]);
+                } else {
+                    echo json_encode(["status" => "error", "message" => "Failed to decline friend request."]);
+                }
+            } else {
+                echo json_encode(["status" => "error", "message" => "Invalid action."]);
+            }
+            exit();
+        }
+        */
+        // wenn ein Button Accept gedrückt wird
+        if (isset($_POST["friendlist_accept"]) ) {
+            // den korrespondierenden Freund laden
+            $friendName = $_POST["friendlist_accept"];
 
-            $newfreind = $service-> loadUser($_POST["friend"].getUsername());
-            $service->friendAccept($friend);
+            // Freund akzeptieren
+            $service->friendAccept($friendName);
+            //echo $friendName;
+            //echo "Friend request accepted!";
+
+        }
+        if (isset($_POST["friendlist_reject"]) ) {
+            // den korrespondierenden Freund laden
+            $friendName = $_POST["friendlist_accept"];
+
+            // Freund akzeptieren
+            $service->friendDismiss($friendName);
+            //echo $friendName;
+            //echo "Friend request rejected!";
+
         }
     ?>
 
@@ -61,14 +101,14 @@
     <hr>
     <h2>New Requests</h2>
 
-    <form class="flex" action="friendlist.php" method="get">
+    <form class="flex"  method="post">
         <div class="form-list" >
         <ol id="requests">
             <!-- loading friends from $requested that are accepted -->
             <?php
             foreach ($friendList as $friend) {
                 if ($friend->getStatus() == "requested") {
-                    echo "<li>Friend Request from <b>" . $friend->getUsername() . "</b><div><input type='submit' value='Accept' action='friendlist_accept' id=" . $friend->getUsername() . "><input type='submit' value='Decline' action='friendlist_decline'></div></li>";
+                    echo "<li>Friend Request from <b>" . $friend->getUsername() . "</b><div><button class='button' value=" .$friend->getUsername(). " name='friendlist_accept' id=" . $friend->getUsername() .  ">Accept</button><button class='button' value=" .$friend->getUsername(). " name='friendlist_reject' id=" . $friend->getUsername() .  ">Reject</button></div></li>";
                 }
             }
             ?>
@@ -78,49 +118,34 @@
     <hr>
         
     </form>
-    <form action="friendlist.php" method="post">
-    <input type="text" name="possibleFriend" placeholder="Search for User">
-    <input type="hidden" name="action" value="add"> <!-- action als verstecktes Feld -->
-    <input type="submit" value="Add">
+    <form method="post">
+        <input type="text" name="NewFriend" placeholder="Search for User">
+        <input type="submit" name="action" value="Add">
     <?php
      
     //Neue Freundschaftsanfrage
-    if (isset($_POST["action"]) && $_POST["action"] == "add") {
+    if (isset($_POST["action"]) && $_POST["action"] == "Add") {
+
         // Auslesen der input Zeile
-        $possibleFriend = isset($_POST["possibleFriend"]) ? $_POST["possibleFriend"] : "";
-        
+        $possibleFriend = isset($_POST["NewFriend"]) ? $_POST["NewFriend"] : "";
+
         // prüfen, ob der Nutzer existiert
         if ($service->userExists($possibleFriend)) {
-            $service->friendAccept($possibleFriend);
-            echo "Friend request sent to $possibleFriend!";
+            echo "User exists! ";
+            if(!$service->friendRequest($possibleFriend)){
+                echo "Failed to send friend request";
+            }
+
+            // Das Problem liegt im Backend. Ich konnte es bis zu HttpClient tracken, wo beim absenden der Anfrage "aud Position 0 ein unerwartetes " ist...
+            // Er scheint nicht die richtige URL zu finden
+
         } else {
             echo "This User doesn't exist";
         }
     }
     ?>
     <?php 
-    //Versuch für Accept und Reject
-    /*if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && isset($_POST['friend'])) {
-        $action = $_POST['action'];
-        $friend = $_POST['friend'];
     
-        if ($action === "accept") {
-            if ($service->friendAccept($friend)) {
-                echo json_encode(["status" => "success", "message" => "Friend request accepted."]);
-            } else {
-                echo json_encode(["status" => "error", "message" => "Failed to accept friend request."]);
-            }
-        } elseif ($action === "decline") {
-            if ($service->friendDismiss($friend)) {
-                echo json_encode(["status" => "success", "message" => "Friend request declined."]);
-            } else {
-                echo json_encode(["status" => "error", "message" => "Failed to decline friend request."]);
-            }
-        } else {
-            echo json_encode(["status" => "error", "message" => "Invalid action."]);
-        }
-        exit();
-    }*/
     ?>
     </form>
 
