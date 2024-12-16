@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <!--
 <?php
         require "start.php";
         require "ajax_load_messages.php";
@@ -23,7 +24,7 @@
             $friend = htmlspecialchars($_GET['friend']);
             echo "Das Chat-Ziel ist: " .$friend;
         } else {
-            header("Location: friendlist.html");
+            header("Location: friendlist.php");
             exit();
         }
         //Was zum Teufel muss ich machen, damit der Chat wenigstens auftaucht??        
@@ -32,6 +33,7 @@
             return;
         }
     ?>
+    -->
     
     <h1>Chat with <?php echo $friend; ?></h1>
     <p class="title">
@@ -50,10 +52,12 @@
         <input type="text" id="message" placeholder="new message">
         <input type="button" value="Send" onclick="sendMessage()">
     </form>
+    <!--
     <script src="main.js"></script>
     <script>
         onChatLoad();
     </script>
+    -->
 </body>
 
 </html>
