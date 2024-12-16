@@ -17,6 +17,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
         $errorName = "Bitte geben Sie einen Benutzernamen ein.";
     } else{
         $username = $_POST["User"];
+        // das Inputfeld username behält den Wert, den der Benutzer eingegeben hat
     }
 
     if(!isset($_POST["Passwort"]) || empty($_POST["Passwort"])){
@@ -26,7 +27,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     }
 
     if(!isset($_POST["Confirm"]) || empty($_POST["Confirm"])){
-        $errorPassword = "Bitte bestätigen Sie Ihr Passwort.";
+        $errorConfirm = "Bitte bestätigen Sie Ihr Passwort.";
     } else{
         $confirm = $_POST["Confirm"];
     }
@@ -57,20 +58,27 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
             $_SESSION['password'] = $password;
             
             header("Location: friendlist.php");
-            exit();
+            //exit();
         }
     }
     else{
         if(!empty($errorName)){
             echo $errorName;
+            echo "<style>#register_username { outline: 1px solid red; }</style>";
+            // change the placeholder of the username field to red
         }
         if(!empty($errorPassword)){
             echo $errorPassword;
+            // change the password field to red 
+            echo "<style>#register_password { outline: 1px solid red; }</style>";
         }
         if(!empty($errorConfirm)){
             echo $errorConfirm;
-        }  
+            echo "<style>#register_confirm { outline: 1px solid red; }</style>";
+            // change the confirm field to red
+        }
     }
+
 }
 ?>
 
@@ -81,6 +89,16 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     <meta charset="UTF-8" />
     <title>Register</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .error-msg {
+            color: red;
+        }
+
+        .is-invalid {
+            border-color: red;
+        }
+    </style>
 </head>
 
 <body>

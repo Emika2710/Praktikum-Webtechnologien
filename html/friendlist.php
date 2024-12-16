@@ -18,6 +18,10 @@
         */
         //Starten von start.php und Backendservice
         require "start.php";
+        if(!isset($_SESSION['user'])) {
+            header("Location: login.php");
+            exit();
+        }
     /*
         // Überprüfen, ob Login/ Register auch wirklich funktioniert
         try {
@@ -28,21 +32,38 @@
             echo "Authentification failed";
         }
             */
+
+        // wie lade ich jetzt die Freunde in regelmäßigen Abständen neu?
         $friendList = $service->loadFriends();
         
         // friendList in Console ausgeben
         echo "<script>console.log(" . json_encode($friendList) . ");</script>";
+
+        // Bei friend_accept wird der Freund akzeptiert
+        if (isset($_POST["action"]) && $_POST["action"] == "friendlist_accept") {
+
+            $newfreind = $service-> loadUser($_POST["friend"].getUsername());
+            $service->friendAccept($friend);
+        }
     ?>
+
 
     <h1>Friends</h1>
     <div class="title">
-        <a href="logout.php">Logout</a> | Settings
+        <a href="logout.php">< Logout</a> | Settings
     </div>
     <hr>
     <div class="flex" method="get">
         <div class="form-container">
             <ul class="friendlist" id="friendslist">
-            </ul>
+                <!-- loading friends from $friendList that are accepted -->
+                <?php
+                foreach ($friendList as $friend) {
+                    if ($friend->getStatus() == "accepted") {
+                        echo "<li><a href='chat.html?friend=" . $friend->getUsername() . "'>" . $friend->getUsername() . "</a><div class='box'>" . $friend->getUnread() . "</div></li>";
+                    }
+                }
+                ?>
         </div>
     </div>
     <hr>
@@ -51,6 +72,14 @@
     <form class="flex" action="friendlist.php" method="get">
         <div class="form-list" >
         <ol id="requests">
+            <!-- loading friends from $requested that are accepted -->
+            <?php
+            foreach ($friendList as $friend) {
+                if ($friend->getStatus() == "requested") {
+                    echo "<li>Friend Request from <b>" . $friend->getUsername() . "</b><div><input type='submit' value='Accept' action='friendlist_accept' id=" . $friend->getUsername() . "><input type='submit' value='Decline' action='friendlist_decline'></div></li>";
+                }
+            }
+            ?>
         </ol>
         </div>
     </form>
