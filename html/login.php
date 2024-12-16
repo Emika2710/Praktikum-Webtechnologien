@@ -53,26 +53,10 @@
         </div>
         <div class="form-buttons">
             <a href="register.php">Register</a>
-            <input type="submit" value="Login" name="Login" method="post">
-            <?php 
-                //Hier ist ein Fehler, dass die SESSION Variable nicht mit dem User belegt wird
-                //Verarbeiten der Formularfelder für Nutzername und Passwort
-                    if(isset($_POST["Login"])){
-                        $username = $_POST["username"];
-                        $password = $_POST["password"];
-                        
-                        $correctUser = $service->login($username, $password);
 
-                        //egal, ob ich diese Funktion ausklammere oder nicht, ich werde auf die Standard Seite weiter geleitet.
-                        if($correctUser == true && $userExists == true){
-                            $_SESSION['user'] = $username;
-                            header("Location: friends.php");
-                            exit();
-                        } else {
-                            echo "Fehler bei Passwort oder Nutzername";
-                        }
-                    }
-                ?>
+            <!--<input type="submit" value="Login" name="login" method="post"> -->
+            <button class="button" name="action" value="login">Login</button>
+
         </div>
 
     </form>
