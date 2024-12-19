@@ -27,3 +27,6 @@ f3630146-151d-41a7-a0bb-fd844a6cdebc
 
 Name:
 http://localhost/ChatApp/html/index.html?
+
+Was noch zu tun ist: 
+Bei der Freundesliste und Chat das Java Script wieder aktivieren, das die Freundschaftsanfragen aktualisiert
