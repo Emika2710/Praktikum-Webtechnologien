@@ -92,7 +92,7 @@
                 <?php
                 foreach ($friendList as $friend) {
                     if ($friend->getStatus() == "accepted") {
-                        echo "<li><a href='chat.php?friend=" . $friend->getUsername() . "'>" . $friend->getUsername() . "</a>
+                        echo "<li><a href='chat.php?to=" . $friend->getUsername() . "'>" . $friend->getUsername() . "</a>
                         <div class=box>". $friend->getUnread() . "</div>
                         </li>";
 

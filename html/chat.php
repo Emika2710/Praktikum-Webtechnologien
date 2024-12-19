@@ -19,9 +19,8 @@
             exit();
         }
 
-        if (isset($_GET['friend']) && !empty(trim($_GET['friend']))) {
-            $to = htmlspecialchars($_GET['friend']);
-            //echo "Das Chat-Ziel ist: " .$friend;
+        if (isset($_GET['to']) && !empty(trim($_GET['to']))) {
+            $to = $_GET['to'];
         } else {
             header("Location: friendlist.php");
             exit();
@@ -56,7 +55,8 @@
         <div class="form-container">
             <ul id="chat">
                 <!-- Hier werden die Nachrichten angezeigt -->
-                <a href="ajax_load_messages.php?to=<?php echo $to; ?>"></a>
+                <?php include('ajax_load_messages.php') ?>
+
             </ul>
         </div>
     </form>
@@ -89,9 +89,7 @@
 
     <script src="main.js"></script>
     -->
-    <script>
-        onChatLoad();
-    </script>
+
 </body>
 
 </html>
