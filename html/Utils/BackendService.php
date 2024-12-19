@@ -149,7 +149,7 @@ class BackendService{
     public function sendMessage($message) {
         try {
             $reply = HttpClient::post($this->link . "/message",
-                array("message" => $message->msg, "to" => $message->to),
+                array("message" => $message->message, "to" => $message->to),
                 $_SESSION["chat_token"]);
             return true;
         } catch(\Exception $e) {

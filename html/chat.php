@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8" />
     <title>Chat</title>
+    
 </head>
 
 <body>
@@ -54,8 +55,8 @@
     <form class="flex" action="friendlist.php" method="get">
         <div class="form-container">
             <ul id="chat">
-                <!-- Hier werden die Nachrichten angezeigt -->
-                <?php include('ajax_load_messages.php') ?>
+                <!-- Hier werden die Nachrichten angezeigt und formatiert -->
+                <!-- <?php $messages = require('ajax_load_messages.php') ?> -->
 
             </ul>
         </div>
@@ -63,32 +64,21 @@
     <br>
     <form method="get" action="chat.php">
         <input type="text" id="message" placeholder="new message">
-    <input type="button" value="Send" onclick="">
+    <input type="button" value="Send" onclick="sendMessage()">
     </form>
-    
-    <!--
+    <form method="post">
+    <!-- Als Aktionecho $service-> removeFriend() einfügen -->
+        <button type="button" value="Delete Friend"> Delete</button>
+    </form>
+
+    <script src="main.js"></script>
     <script>
-        function onChatLoad() {
-            console.log("Chat loaded");
-            let heading = document.getElementsByTagName("h1")[0];
-            //heading.innerText = "Chat with " + friend;
-            loadChat();
-            //setInterval(loadChat, 1000);
-        }
-        function loadChat() {
-            // ajax_load_messages.php aufrufen
-            fetch("ajax_load_messages.php")
-            .then(response => response.json())
-            .then(data => {
-                // Daten anzeigen
-                console.log(data);
-            });
-        }
+        loadChat();
     </script>
 
 
-    <script src="main.js"></script>
-    -->
+
+
 
 </body>
 

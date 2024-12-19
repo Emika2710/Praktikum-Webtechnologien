@@ -154,7 +154,8 @@
 
             echo "<br>";
             echo "User exists! ";
-            if(!$service->friendRequest($possibleFriend)){
+            $newFriend = new Model\Friend($possibleFriend);
+            if(!$service->friendRequest($newFriend)) {
                 echo "Failed to send friend request";
             }
 
@@ -170,12 +171,6 @@
     
     ?>
     </form>
-
-    <!--<script src="main.js"></script>
-    <script>
-        loadFriendList();
-    </script>
-    -->
 </body>
 
 </html>
