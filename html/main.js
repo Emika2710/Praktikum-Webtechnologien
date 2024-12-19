@@ -12,7 +12,7 @@ function getChatpartner() {
     return friendValue;
 }
 
-/*
+
 // Freundesliste mit Nachrichten darstellen 
 function updateFriends(data) {
 
@@ -31,7 +31,7 @@ function updateFriends(data) {
 
             let friend = document.createElement('a');
             // An Meli: hier kannst zu die Infos (welcher Freund ist es) weiterleiten
-            friend.setAttribute("href", "chat.html?friend=" + friends);
+            friend.setAttribute("href", "chat.php?to=" + friends);
             friend.innerHTML = friends;
 
             let div = document.createElement('div');
@@ -53,15 +53,17 @@ function updateFriends(data) {
 
             let div = document.createElement('div');
 
-            let button1 = document.createElement('input');
-            button1.type = "button";
-            button1.value = "Accept";
-            button1.id = "friendlist_accept";
+            let button1 = document.createElement('button');
+            button1.class = "button";
+            button1.value = friends;
+            button1.name = "friendlist_accept";
+            button1.innerHTML = "Accept";
 
-            let button2 = document.createElement('input');
-            button2.type = "button";
-            button2.value = "Decline";
-            button2.id = "friendlist_decline";
+            let button2 = document.createElement('button');
+            button2.class = "button";
+            button2.value = friends;
+            button2.name = "friendlist_decline";
+            button2.innerHTML = "Decline";
 
             div.appendChild(button1);
             div.appendChild(button2);
@@ -73,42 +75,8 @@ function updateFriends(data) {
         }
     }
 }
-//Versuch für Accept und Reject
-    /*document.addEventListener("click", function(event) {
-        if (event.target && event.target.id === "friendlist_accept") {
-            let friendName = event.target.closest("li").querySelector("b").innerText;
-    
-            // AJAX-Request für "Accept"
-            fetch("friendlist.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `action=accept&friend=${encodeURIComponent(friendName)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message); // Serverantwort anzeigen
-                location.reload(); // Optional, Seite neu laden
-            });
-        }
-    
-        if (event.target && event.target.id === "friendlist_decline") {
-            let friendName = event.target.closest("li").querySelector("b").innerText;
-    
-            // AJAX-Request für "Decline"
-            fetch("friendlist.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `action=decline&friend=${encodeURIComponent(friendName)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message); // Serverantwort anzeigen
-                location.reload(); // Optional, Seite neu laden
-            });
-        }
-    });*/
 
-/*
+
 // Friendlist laden
 function loadFriendList() {
     let xmlhttp = new XMLHttpRequest();
@@ -120,17 +88,17 @@ function loadFriendList() {
         }
     };
     xmlhttp.open("GET", "ajax_load_friends.php", true); // URL geändert
-    // Token und Content-type Header entfernt
+    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNzMyMjI1NDY0fQ.xhntKonXGqqHiVEDACeldiO597mhL9HPOVr4jnS3lIo');
     xmlhttp.send();
 };
-*/
+
 //Funktionen für den Chat
 function onChatLoad() {
     let friend = getChatpartner();
     let heading = document.getElementsByTagName("h1")[0];
     heading.innerText = "Chat with " + friend;
     loadChat();
-    //setInterval(loadChat, 1000);
+    setInterval(loadChat, 1000);
 }
 
 function loadChat() {
@@ -188,9 +156,8 @@ function loadFriends() {
     xmlhttp.setRequestHeader('Authorization', 'Bearer ' + window.token);
     xmlhttp.send();
 }
-
+loadFriends();
 window.setInterval(function () {
     loadFriends();
 }, 1000);
 
-loadFriends();

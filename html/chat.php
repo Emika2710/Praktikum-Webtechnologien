@@ -26,23 +26,12 @@
             header("Location: friendlist.php");
             exit();
         } 
-
-
-        // Die Daten laden
-        // das Programm ajax_load_messages laufen lassen
-
-        
-        /*
-            
-            require "ajax_send_messages.php";  
-
-        
-        //Was zum Teufel muss ich machen, damit der Chat wenigstens auftaucht??        
-        if (!isset($_GET['to'])) {
-            http_response_code(400); // bad request
-            return;
+        if(isset($_POST["action"]) && $_POST["action"] == "delete"){
+            echo "Delete";
+            $service-> removeFriend($to);
+            header("Location: friendlist.php");
         }
-        */
+
     ?>
 
     
@@ -50,7 +39,8 @@
     <p class="title">
         <a href="friendlist.php">
             &lt;back </a>|
-        <a href="friendlist.php" style="color: red;">remove friend</a>
+        <!--<a href="friendlist.php" style="color: red;">remove friend</a> -->
+        <button class="button" name="action" value="delete">Delete</button>
     </p>
     <form class="flex" action="friendlist.php" method="get">
         <div class="form-container">
@@ -66,18 +56,11 @@
         <input type="text" id="message" placeholder="new message">
     <input type="button" value="Send" onclick="sendMessage()">
     </form>
-    <form method="post">
-    <!-- Als Aktionecho $service-> removeFriend() einfügen -->
-        <button type="button" value="Delete Friend"> Delete</button>
-    </form>
 
     <script src="main.js"></script>
     <script>
         loadChat();
     </script>
-
-
-
 
 
 </body>

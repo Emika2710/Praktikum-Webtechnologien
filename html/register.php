@@ -90,15 +90,6 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     <title>Register</title>
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        .error-msg {
-            color: red;
-        }
-
-        .is-invalid {
-            border-color: red;
-        }
-    </style>
 </head>
 
 <body>
