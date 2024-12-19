@@ -54,7 +54,7 @@
     <br>
     <form method="get" action="chat.php">
         <input type="text" id="message" placeholder="new message">
-    <input type="button" value="Send" onclick="sendMessage()">
+        <input type="button" value="Send" onclick="sendMessage()">
     </form>
 
     <script src="main.js"></script>

@@ -141,6 +141,7 @@ function sendMessage() {
     let jsonString = JSON.stringify(data); // Serialize as JSON
     xmlhttp.send(jsonString); // Send JSON-data to server
     messageElement.value = "";
+    loadChat();
 }
 
 function loadFriends() {
