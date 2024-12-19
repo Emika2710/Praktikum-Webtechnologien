@@ -92,7 +92,10 @@
                 <?php
                 foreach ($friendList as $friend) {
                     if ($friend->getStatus() == "accepted") {
-                        echo "<li><a href='chat.php?friend=" . $friend->getUsername() . "'>" . $friend->getUsername() . "</a></li>";
+                        echo "<li><a href='chat.php?friend=" . $friend->getUsername() . "'>" . $friend->getUsername() . "</a>
+                        <div class=box>". $friend->getUnread() . "</div>
+                        </li>";
+
                     }
                 }
                 ?>
@@ -108,7 +111,10 @@
             <?php
             foreach ($friendList as $friend) {
                 if ($friend->getStatus() == "requested") {
-                    echo "<li>Friend Request from <b>" . $friend->getUsername() . "</b><div><button class='button' value=" .$friend->getUsername(). " name='friendlist_accept' id=" . $friend->getUsername() .  ">Accept</button><button class='button' value=" .$friend->getUsername(). " name='friendlist_reject' id=" . $friend->getUsername() .  ">Reject</button></div></li>";
+                    echo "<li>Friend Request from <b>" . $friend->getUsername() . "</b><div>
+                    <button class='button' value=" .$friend->getUsername(). " name='friendlist_accept' id=" . $friend->getUsername() .  ">Accept</button>
+                    <button class='button' value=" .$friend->getUsername(). " name='friendlist_reject' id=" . $friend->getUsername() .  ">Reject</button>
+                    </div></li>";
                 }
             }
             ?>

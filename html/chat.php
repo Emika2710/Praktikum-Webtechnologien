@@ -27,9 +27,13 @@
             exit();
         } 
 
+
+        // Die Daten laden
+        // das Programm ajax_load_messages laufen lassen
+
         
         /*
-            require "ajax_load_messages.php";
+            
             require "ajax_send_messages.php";  
 
         
@@ -52,7 +56,7 @@
         <div class="form-container">
             <ul id="chat">
                 <!-- Hier werden die Nachrichten angezeigt -->
-
+                <a href="ajax_load_messages.php?to=<?php echo $to; ?>"></a>
             </ul>
         </div>
     </form>
@@ -61,7 +65,8 @@
         <input type="text" id="message" placeholder="new message">
     <input type="button" value="Send" onclick="">
     </form>
-        
+    
+    <!--
     <script>
         function onChatLoad() {
             console.log("Chat loaded");
@@ -81,7 +86,7 @@
         }
     </script>
 
-    <!--
+
     <script src="main.js"></script>
     -->
     <script>
