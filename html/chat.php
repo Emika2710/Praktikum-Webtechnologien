@@ -11,28 +11,35 @@
 <body>
     <!-- Freund Löschen -->
 <?php
-        require "start.php";
- 
+    require "start.php";
 
-        //Überprüfen ob Daten Stimmen
-        if(!isset($_SESSION["user"])){
-            header("Location: login.php");
+
+    //Überprüfen ob Daten Stimmen
+    if(!isset($_SESSION["user"])){
+        header("Location: login.php");
+        exit();
+    }
+
+    if (isset($_GET['to']) && !empty(trim($_GET['to']))) {
+        $to = $_GET['to'];
+    } else {
+        header("Location: friendlist.php");
+        exit();
+    } 
+    // Wenn der Button Delete gedrückt wird wird der Freund gelöscht
+    if(isset($_GET['action2']) && $_GET['action2'] == "Delete"){
+        echo "Delete";
+        if($service->removeFriend($to)){
+            header("Location: friendlist.php");
             exit();
         }
 
-        if (isset($_GET['to']) && !empty(trim($_GET['to']))) {
-            $to = $_GET['to'];
-        } else {
-            header("Location: friendlist.php");
-            exit();
-        } 
-        if(isset($_POST["action"]) && $_POST["action"] == "delete"){
-            echo "Delete";
-            $service-> removeFriend($to);
-            header("Location: friendlist.php");
-        }
+    }
 
-    ?>
+
+
+
+?>
 
     
     <h1>Chat with <?php echo $to; ?></h1>
@@ -40,7 +47,9 @@
         <a href="friendlist.php">
             &lt;back </a>|
         <!--<a href="friendlist.php" style="color: red;">remove friend</a> -->
-        <button class="button" name="action" value="delete">Delete</button>
+
+        <input type="button" value="Delete" onclick="window.location.href='friendlist.php'; <?php echo $service->removeFriend($to); ?> " >
+
     </p>
     <form class="flex" action="friendlist.php" method="get">
         <div class="form-container">
