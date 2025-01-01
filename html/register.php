@@ -92,7 +92,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
 
     <!-- Bootstrap CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
 
 </head>
@@ -113,35 +113,37 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
             <!-- Form -->
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <div class="bg-body border p-5">
+                    <div class="bg-body border p-4">
                         <form>
                             <div class="text-center">
                                 <h4>Register yourself</h4>
-                                <input type="username" class="form-control mb-3" placeholder="Username" name="User" id="register_username">
-                                <input type="password" class="form-control mb-3" placeholder="Password" name="Passwort" id="register_password">
-                                <input type="password" class="form-control mb-3" placeholder="Confirm Password" name="Confirm" id="register_confirm">
+                                <div class="form-floating mb-3">
+                                    <input type="username" class="form-control text-start" placeholder="Username" name="User" id="register_username">
+                                    <label for="floatingInput">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" placeholder="Password" name="Passwort" id="register_password">
+                                    <label for="floatingInput">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" placeholder="Confirm Password" name="Confirm" id="register_confirm">
+                                    <label for="floatingInput">Confirm Password</label>
+                                </div>
+                                
+                                <!-- Buttons -->
+                                <div class="btn-group" role="group">
+                                    <a href="login.php" class="btn btn-secondary">Cancle</a>
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                                
                             </div>
                         </form>    
                     </div>
                 </div>
             </div>
-
-            <form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-            </form> 
-
         </div>
     </div>
-    
+
 
 
     <div class="flex">
@@ -168,7 +170,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     </form>
 
     <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 
