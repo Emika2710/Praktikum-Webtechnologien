@@ -88,7 +88,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
 <head>
     <meta charset="UTF-8" />
     <title>Register</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
 
     <!-- Bootstrap CSS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,6 +98,42 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
 </head>
 
 <body>
+    <div class="container">
+        <div class="d-grid gap-3">
+            <!-- Image -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-3">
+                    <div class="text-center" id="image">
+                        <img src="../images/user.png" class="img-fluid rounded-circle" alt="User-Image">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="row justify-content-center">
+                <div class="col-5">
+                    <form>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi unde laboriosam consequuntur illo dolores mollitia, maxime molestias possimus reiciendis, incidunt reprehenderit dolorem sint. Perferendis provident, nesciunt temporibus explicabo commodi consectetur?
+                    </form>    
+                </div>
+            </div>
+
+            <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            </form> 
+        </div>
+    </div>
+
+
     <div class="flex">
         <img src="../images/user.png" alt="User-Image" height="200px" width="200px">
     </div>
