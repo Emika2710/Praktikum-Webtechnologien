@@ -98,11 +98,12 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
 </head>
 
 <body>
-    <div class="container">
-        <div class="d-grid gap-3">
+    <div class="bg-light">
+        <div class="container">
+                
             <!-- Image -->
-            <div class="row justify-content-center mb-4">
-                <div class="col-3">
+            <div class="row justify-content-center mb-4 mt-3">
+                <div class="col-2">
                     <div class="text-center" id="image">
                         <img src="../images/user.png" class="img-fluid rounded-circle" alt="User-Image">
                     </div>
@@ -111,10 +112,17 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
 
             <!-- Form -->
             <div class="row justify-content-center">
-                <div class="col-5">
-                    <form>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi unde laboriosam consequuntur illo dolores mollitia, maxime molestias possimus reiciendis, incidunt reprehenderit dolorem sint. Perferendis provident, nesciunt temporibus explicabo commodi consectetur?
-                    </form>    
+                <div class="col-4">
+                    <div class="bg-body border p-5">
+                        <form>
+                            <div class="text-center">
+                                <h4>Register yourself</h4>
+                                <input type="username" class="form-control mb-3" placeholder="Username" name="User" id="register_username">
+                                <input type="password" class="form-control mb-3" placeholder="Password" name="Passwort" id="register_password">
+                                <input type="password" class="form-control mb-3" placeholder="Confirm Password" name="Confirm" id="register_confirm">
+                            </div>
+                        </form>    
+                    </div>
                 </div>
             </div>
 
@@ -130,8 +138,10 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
             </form> 
+
         </div>
     </div>
+    
 
 
     <div class="flex">
