@@ -97,54 +97,61 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
 
 </head>
 
-<body>
-    <div class="bg-light">
-        <div class="container">
-                
-            <!-- Image -->
-            <div class="row justify-content-center mb-4 mt-3">
-                <div class="col-2">
-                    <div class="text-center" id="image">
-                        <img src="../images/user.png" class="img-fluid rounded-circle" alt="User-Image">
-                    </div>
+<body class="bg-light">
+
+    <div class="container">
+            
+        <!-- Image -->
+        <div class="row justify-content-center mb-4 mt-3">
+            <div class="col-2">
+                <div class="text-center" id="image">
+                    <img src="../images/user.png" class="img-fluid rounded-circle" alt="User-Image">
                 </div>
             </div>
+        </div>
 
-            <!-- Form -->
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <div class="bg-body border p-4">
-                        <form>
-                            <div class="text-center">
-                                <h4>Register yourself</h4>
-                                <div class="form-floating mb-3">
-                                    <input type="username" class="form-control text-start" placeholder="Username" name="User" id="register_username">
-                                    <label for="floatingInput">Username</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" name="Passwort" id="register_password">
-                                    <label for="floatingInput">Password</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" placeholder="Confirm Password" name="Confirm" id="register_confirm">
-                                    <label for="floatingInput">Confirm Password</label>
-                                </div>
-                                
-                                <!-- Buttons -->
+        <!-- Form -->
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="bg-body border p-4">
+                    <form>
+                        <div class="text-center">
+
+                            <!-- Title -->
+                            <h4>Register yourself</h4>
+
+                            <!-- Input -->
+                            <div class="form-floating mb-3">
+                                <input type="username" class="form-control" placeholder="Username" name="User" id="register_username" onkeyup="checkUsername()">
+                                <label for="floatingInput">Username</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" placeholder="Password" name="Passwort" id="register_password" onkeyup="checkPassword()">
+                                <label for="floatingInput">Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" placeholder="Confirm Password" name="Confirm" id="register_confirm" onkeyup="checkConfirm()">
+                                <label for="floatingInput">Confirm Password</label>
+                            </div>
+                            
+                            <!-- Buttons -->
+                            <div class="d-grid gap-2">
                                 <div class="btn-group" role="group">
                                     <a href="login.php" class="btn btn-secondary">Cancle</a>
                                     <button type="submit" class="btn btn-primary">Register</button>
                                 </div>
-                                
                             </div>
-                        </form>    
-                    </div>
+                            
+                        </div>
+                    </form>    
                 </div>
             </div>
         </div>
     </div>
+  
 
 
+    <!--
 
     <div class="flex">
         <img src="../images/user.png" alt="User-Image" height="200px" width="200px">
@@ -168,10 +175,21 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
         </div>
         
     </form>
-
+    -->
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script>
+        function checkUsername(){
+            var username = document.getElementById("register_username").value;
+            //username.classList.remove('is-valid', 'is-invalid');
+            if(username.length <= 2){
+                document.getElementById("register_username").classList.add("is-invalid");
+            } 
+            else{
+                document.getElementById("register_username").classList.add("is-valid");
+            }
+        }
+    </script>
 </body>
 
 </html>
