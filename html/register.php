@@ -1,7 +1,8 @@
 <?php
 require "start.php";
 
-$errorName = "";
+// Error-Handling
+$errorUsername = "";
 $errorPassword = "";
 $errorConfirm = "";
 $username = "";
@@ -11,13 +12,28 @@ $confirm = "";
 
 // Wenn das Formular abgeschickt wurde
 if (isset($_POST["action"]) && $_POST["action"] == "register") {
+    
+    
+    $username = $_POST["User"];
+    $password = $_POST["Passwort"];
+    // Benutzer registrieren
+    if($service->register($username, $password)){
+        
+        echo "Benutzer wurde erfolgreich registriert.";
+        $_SESSION['user'] = $username;
+        $_SESSION['password'] = $password;
 
+        header("Location: friendlist.php");
+        exit();
+    }
+
+
+    /*
     // Validierung
     if(!isset($_POST["User"]) || empty($_POST["User"])){
         $errorName = "Bitte geben Sie einen Benutzernamen ein.";
     } else{
         $username = $_POST["User"];
-        // das Inputfeld username behält den Wert, den der Benutzer eingegeben hat
     }
 
     if(!isset($_POST["Passwort"]) || empty($_POST["Passwort"])){
@@ -31,21 +47,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     } else{
         $confirm = $_POST["Confirm"];
     }
-
-    // Wenn keine Fehler aufgetreten sind
-    if(empty($errorName) && empty($errorPassword)){
-
-        // Benutzer registrieren
-        if($service->register($username, $password)){
-            //echo "Benutzer wurde erfolgreich registriert.";
-            $_SESSION['user'] = $username;
-            $_SESSION['password'] = $password;
-            
-            header("Location: friendlist.php");
-            //exit();
-        }
-    }
-
+    */
 }
 ?>
 
@@ -81,7 +83,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
         <div class="row justify-content-center">
             <div class="col-4">
                 <div class="bg-body border p-4">
-                    <form>
+                    <form method="post">
                         <div class="text-center">
 
                             <!-- Title -->
@@ -89,21 +91,21 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
 
                             <!-- Input -->
                             <div class="form-floating mb-3">
-                                <input type="username" class="form-control" placeholder="Username" name="User" id="register_username" onkeyup="checkUsername()">
+                                <input type="username" class="form-control" placeholder="Username" name="User" id="register_username" onkeyup="checkUsername()" required>
                                 <label for="floatingInput">Username</label>
                                 <div class="invalid-feedback">
                                 </div>
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" placeholder="Password" name="Passwort" id="register_password" onkeyup="checkPassword()">
+                                <input type="password" class="form-control" placeholder="Password" name="Passwort" id="register_password" onkeyup="checkPassword()" required>
                                 <label for="floatingInput">Password</label>
                                 <div class="invalid-feedback">
                                     The password must be at least 8 characters long.
                                 </div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" placeholder="Confirm Password" name="Confirm" id="register_confirm" onkeyup="checkConfirm()">
+                                <input type="password" class="form-control" placeholder="Confirm Password" name="Confirm" id="register_confirm" onkeyup="checkConfirm()" required>
                                 <label for="floatingInput">Confirm Password</label>
                                 <div class="invalid-feedback">
                                     The passwords do not match.
@@ -114,18 +116,48 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
                             <div class="d-grid gap-2">
                                 <div class="btn-group" role="group">
                                     <a href="login.php" class="btn btn-secondary">Cancle</a>
-                                    <button type="submit" class="btn btn-primary">Register</button>
+                                    <button class="btn btn-primary" id="register_button" name="action" value="register">Register</button>
                                 </div>
                             </div>
                         </div>
                     </form>    
                 </div>
             </div>
-
+        </div>
+        
+        <!-- Invisible Error -->
+        <div class="visually-hidden">
+            <div id="errorUsername">                
+            </div>
+            <div id="errorPassword">
+            </div>
+            <div id="errorConfirm">
+            </div>
         </div>
     </div>
   
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="register_helper.js"></script>
+    <script>
+        // Button disabled until all inputs are valid
+        document.getElementById("register_button").disabled = true;
 
+        window.setInterval(function () {
+            // Gett error messages
+            var errorUsername = document.getElementById("errorUsername").innerHTML;
+            var errorPassword = document.getElementById("errorPassword").innerHTML;
+            var errorConfirm = document.getElementById("errorConfirm").innerHTML;
+
+            // Check if all inputs are valid
+            if (errorUsername == "" && errorPassword == "" && errorConfirm == "") {
+                document.getElementById("register_button").disabled = false;
+            } else {
+                document.getElementById("register_button").disabled = true;
+            }
+        }, 500);
+
+    </script>
 
     <!--
 
@@ -152,9 +184,6 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
         
     </form>
     -->
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="register_helper.js"></script>
 </body>
 
 </html>

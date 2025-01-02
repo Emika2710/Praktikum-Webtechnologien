@@ -12,11 +12,19 @@ function checkUserExists(){
 
                 document.getElementById("register_username").classList.add("is-invalid");
                 document.getElementsByClassName('invalid-feedback')[0].style.display = 'block';
+
+                // error message
+                let error = document.getElementById("errorUsername");
+                error.innerHTML = "errorUsername";
             
             } else if(xmlhttp.status == 404) {
                 console.log("Does not exist");
                 document.getElementById("register_username").classList.add("is-valid");
                 document.getElementsByClassName('invalid-feedback')[0].style.display = 'none';
+
+                // non-error message
+                let error = document.getElementById("errorUsername");
+                error.innerHTML = "";
             }
         }
     };
@@ -41,6 +49,10 @@ function checkUsername(){
         username.classList.add("is-invalid");
         document.getElementsByClassName('invalid-feedback')[0].style.display = 'block';
 
+        // error message
+        let error = document.getElementById("errorUsername");
+        error.innerHTML = "errorUsername";
+
     }
     
 }
@@ -52,10 +64,18 @@ function checkPassword(){
     if(password.value.length >= 8){
         password.classList.add("is-valid");
         document.getElementsByClassName('invalid-feedback')[1].style.display = 'none';
+
+        // non-error message
+        let error = document.getElementById("errorPassword");
+        error.innerHTML = "";
     } 
     else{
         password.classList.add("is-invalid");
         document.getElementsByClassName('invalid-feedback')[1].style.display = 'block';
+
+        // error message
+        let error = document.getElementById("errorPassword");
+        error.innerHTML = "errorPassword";
     }
 
 }
@@ -68,9 +88,19 @@ function checkConfirm(){
     if(confirm.value == password.value){
         confirm.classList.add("is-valid");
         document.getElementsByClassName('invalid-feedback')[2].style.display = 'none';
+
+        // non-error message
+        let error = document.getElementById("errorConfirm");
+        error.innerHTML = "";
+
     } 
     else{
         confirm.classList.add("is-invalid");
         document.getElementsByClassName('invalid-feedback')[2].style.display = 'block';
+
+        // error message
+        let error = document.getElementById("errorConfirm");
+        error.innerHTML = "errorConfirm";
     }
 }
+
