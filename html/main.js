@@ -43,7 +43,7 @@ function updateFriends(data) {
             
             if(messages > 0) {
                 let messagecount = document.createElement('span');
-                messagecount.className = "badge text-bg-primary  rounded-circle position-absolute end-0 me-3"; 
+                messagecount.className = "badge text-bg-primary rounded-circle position-absolute end-0 me-3"; 
                 messagecount.innerHTML = messages;
                 friend.appendChild(messagecount);
             }
@@ -124,14 +124,29 @@ function loadChat() {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             let data = JSON.parse(xmlhttp.responseText);
+
             //Einfügen der Elemente des Arrays Data in die Liste des Chats
             let chat = document.getElementById("chat");
             chat.innerHTML = "";
+
             for (let i = 0; i < data.length; i++) {
+
+                //Setup
                 let chatelement = document.createElement("li");
+                chatelement.className = "list-group-item my-2";
                 let currentData = data[i];
+
+                //Nachrichten in die Liste einfügen
                 chatelement.innerText = currentData.from + ": " + currentData.msg;
                 chat.appendChild(chatelement);
+
+                let time = document.createElement("small");
+                time.className = "text-muted position-absolute end-0 ";
+
+                let date = new Date(currentData.time * 1000);
+                time.innerText = date.toLocaleTimeString();
+                chatelement.appendChild(time);
+                
             }
         }
     };

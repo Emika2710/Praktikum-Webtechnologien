@@ -52,14 +52,34 @@
                 </div>
 
                 <!-- Navigation -->
-                <div class="row my-3 mb-5">
-                    <div class="col-8">
-                        <div class="btn-group" role="group">
+                <div class="row my-3">
+                    <div class="col-8">     
+                         <div class="btn-group" role="group">
+                        
                             <a href="friendlist.php" class="btn btn-secondary">< Back</a>
                             <button type="button" class="btn btn-secondary">Show Profil</button>
                             <input type="button" class="btn btn-danger" value="Remove Friend" onclick="">
                         </div>
                     </div>
+                </div>
+
+                <!-- Chatverlauf -->
+                <div class="row mb-3">
+                    <div class="bg-body border px-3 pt-2">
+                        <ul id="chat" class="list-unstyled">
+                            <!-- Hier werden die Nachrichten angezeigt und formatiert -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Neue Nachricht senden-->
+                <div class="row my-4">
+                    <form method="post" class="form-group px-0">   
+                        <div class="btn-group col-12 " type="group">
+                            <input type="text" class="form-control" placeholder="New Message" id="message">
+                            <input type="button" class="btn btn-primary" value="Send" onclick="sendMessage()">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -96,9 +96,6 @@ if (isset($_POST["friendlist_reject"]) ) {
 
                 <hr>
 
-                <!-- Add Friend -->
-                <!-- THIS DOES NOT YET WORK -->
-
                 <div class="row my-4">
                     <form method="post" class="form-group ps-0">   
                         <div class="btn-group col-12 " type="group">
