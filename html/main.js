@@ -182,3 +182,30 @@ window.setInterval(function () {
 }, 1000);
 
 
+// Load user
+function loadUser(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+            let data = JSON.parse(xmlhttp.responseText);
+            console.log(data);
+
+            let datalist = document.getElementById("friend-selector");
+            for (let i = 0; i < data.length; i++) {
+
+                // Nutzer laden
+                let user = data[i];
+
+                let option = document.createElement("option");
+                option.innerHTML = user;
+
+                datalist.appendChild(option);
+
+            }
+        }
+    };
+    xmlhttp.open("GET", "ajax_load_users.php", true);
+    xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjI5ODkzNTkwfQ.MRSZeLY8YNGp1dBWoYLUXTfs4ci1v13TkhQmke2nfII');
+    xmlhttp.send();
+}

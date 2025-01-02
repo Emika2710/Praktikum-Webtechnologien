@@ -1,3 +1,68 @@
+<?php
+
+require "start.php";
+if(!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// wie lade ich jetzt die Freunde in regelmäßigen Abständen neu?
+$friendList = $service->loadFriends();
+//updateFriends($friendlist);
+
+// friendList in Console ausgeben
+echo "<script>console.log(" . json_encode($friendList) . ");</script>";
+
+// wenn ein Button Accept gedrückt wird
+if (isset($_POST["friendlist_accept"]) ) {
+    // den korrespondierenden Freund laden
+    $friendName = $_POST["friendlist_accept"];
+
+    // Freund akzeptieren
+    $service->friendAccept($friendName);
+    //echo $friendName;
+    //echo "Friend request accepted!";
+
+}
+if (isset($_POST["friendlist_reject"]) ) {
+    // den korrespondierenden Freund laden
+    $friendName = $_POST["friendlist_accept"];
+
+    // Freund akzeptieren
+    $service->friendDismiss($friendName);
+    //echo $friendName;
+    //echo "Friend request rejected!";
+
+}
+
+
+     
+//Neue Freundschaftsanfrage
+if (isset($_POST["action"]) && $_POST["action"] == "Add") {
+
+    // Auslesen der input Zeile
+    $possibleFriend = isset($_POST["NewFriend"]) ? $_POST["NewFriend"] : "";
+
+    // prüfen, ob der Nutzer existiert
+    if ($service->userExists($possibleFriend)) {
+
+        $newFriend = new Model\Friend($possibleFriend);
+        if(!$service->friendRequest($newFriend)) {
+            echo "Failed to send friend request";
+        }
+
+
+    } else {
+        echo "This User doesn't exist";
+    }
+
+}
+    
+    
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,10 +121,13 @@
                 <hr>
 
                 <!-- Add Friend -->
+                <!-- THIS DOES NOT YET WORK -->
 
                 <div class="row my-4">
                     <div class="btn-group ps-0" type="group">
                         <input type="text" class="form-control" placeholder="Add Friend to List" name="NewFriend" id="friend-request-name" list="friend-selector">
+                        <datalist id="friend-selector">
+                        </datalist>
                         <button type="submit" class="btn btn-primary" name="action" value="Add" onclick="loadFriendList()">Add</button>
                     </div>
                 </div>
@@ -67,44 +135,6 @@
         </div>
     </div>
 
-    <?php
-
-        require "start.php";
-        if(!isset($_SESSION['user'])) {
-            header("Location: login.php");
-            exit();
-        }
-
-        // wie lade ich jetzt die Freunde in regelmäßigen Abständen neu?
-        $friendList = $service->loadFriends();
-        //updateFriends($friendlist);
-        
-        // friendList in Console ausgeben
-        echo "<script>console.log(" . json_encode($friendList) . ");</script>";
-
-        // wenn ein Button Accept gedrückt wird
-        if (isset($_POST["friendlist_accept"]) ) {
-            // den korrespondierenden Freund laden
-            $friendName = $_POST["friendlist_accept"];
-
-            // Freund akzeptieren
-            $service->friendAccept($friendName);
-            //echo $friendName;
-            //echo "Friend request accepted!";
-
-        }
-        if (isset($_POST["friendlist_reject"]) ) {
-            // den korrespondierenden Freund laden
-            $friendName = $_POST["friendlist_accept"];
-
-            // Freund akzeptieren
-            $service->friendDismiss($friendName);
-            //echo $friendName;
-            //echo "Friend request rejected!";
-
-        }
-            
-    ?>
 
 
     
@@ -114,6 +144,7 @@
     <script src="main.js"></script>
     <script>
         loadFriendList();
+        loadUser();
     </script>
 </body>
 
