@@ -124,7 +124,7 @@ function loadChat() {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             let data = JSON.parse(xmlhttp.responseText);
-
+            console.log(data);
             //Einfügen der Elemente des Arrays Data in die Liste des Chats
             let chat = document.getElementById("chat");
             chat.innerHTML = "";
@@ -133,7 +133,7 @@ function loadChat() {
 
                 //Setup
                 let chatelement = document.createElement("li");
-                chatelement.className = "list-group-item my-2";
+                chatelement.className = "list-group-item my-2 fw-medium";
                 let currentData = data[i];
 
                 //Nachrichten in die Liste einfügen
@@ -143,7 +143,7 @@ function loadChat() {
                 let time = document.createElement("small");
                 time.className = "text-muted position-absolute end-0 ";
 
-                let date = new Date(currentData.time * 1000);
+                let date = new Date(data[i].time);
                 time.innerText = date.toLocaleTimeString();
                 chatelement.appendChild(time);
                 

@@ -58,7 +58,7 @@
                         
                             <a href="friendlist.php" class="btn btn-secondary">< Back</a>
                             <button type="button" class="btn btn-secondary">Show Profil</button>
-                            <input type="button" class="btn btn-danger" value="Remove Friend" onclick="">
+                            <input type="button" class="btn btn-danger" value="Remove Friend" onclick="showDelete()">
                         </div>
                     </div>
                 </div>
@@ -81,6 +81,25 @@
                         </div>
                     </form>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title fw-semibold" id="modal_heading">Remove <?php echo $to ?> as Friend</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Do you really wnat to end your friendship?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                            <button type="button" class="btn btn-primary" onclick="removeFriend()" data-bs-dismiss="modal">Yes, Please!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -92,6 +111,19 @@
     <script src="main.js"></script>
     <script>
         loadChat();
+        window.setInterval(function () {
+            loadChat();
+        }, 1000);
+
+        function showDelete(){
+            var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+            myModal.show();
+        }
+
+        function removeFriend(){
+            window.location.href = "chat.php?to=<?php echo $to ?>&action2=Delete";  
+        }
+        
     </script>
 </body>
 
