@@ -23,27 +23,44 @@ function updateFriends(data) {
     ol.innerHTML = "";
 
     for (let i = 0; i < data.length; i++) {
-        let li = document.createElement("li");
+        
+
         let friends = data[i].username;
         let messages = data[i].unread;
 
         if (data[i].status == "accepted") {
 
+            // Listenelement erstellen
             let friend = document.createElement('a');
-            // An Meli: hier kannst zu die Infos (welcher Freund ist es) weiterleiten
             friend.setAttribute("href", "chat.php?to=" + friends);
+            friend.className = "list-group-item list-group-item-action";
             friend.innerHTML = friends;
+
+
+            //let friend = document.createElement('a');
+            //friend.setAttribute("href", "chat.php?to=" + friends);
+
+            
+            if(messages > 0) {
+                let messagecount = document.createElement('span');
+                messagecount.className = "badge text-bg-primary  rounded-circle position-absolute end-0 me-3"; 
+                messagecount.innerHTML = messages;
+                friend.appendChild(messagecount);
+            }
 
             let div = document.createElement('div');
             div.className = "box";
             div.innerHTML = messages;
 
-            li.appendChild(friend);
-            li.appendChild(div);
+            //li.appendChild(friend);
+            //li.appendChild(div);
 
-            ul.appendChild(li);
+            ul.appendChild(friend);
         }
         if (data[i].status === "requested") {
+
+            let li = document.createElement("li");
+            li.className = "list-group-item";
 
             let b = document.createElement('b');
             b.innerHTML = friends;
@@ -79,6 +96,7 @@ function updateFriends(data) {
 
 // Friendlist laden
 function loadFriendList() {
+    console.log("loadFriendList");
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

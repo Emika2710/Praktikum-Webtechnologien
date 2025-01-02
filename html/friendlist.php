@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="style.css"> -->
     <meta charset="UTF-8" />
     <title>Friendlist</title>
 
@@ -13,8 +13,62 @@
     
 </head>
 
-<body>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <!-- Headline -->
+                <div class="row my-3">
+                    <h1>Friends</h1>
+                </div>
+
+                <!-- Navigation -->
+                <div class="row my-3 mb-5">
+                    <div class="col-5">
+                        <div class="btn-group" role="group">
+                            <a href="logout.php" class="btn btn-secondary">< Logout</a>
+                            <button type="button" class="btn btn-secondary">Edit Profil</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Friendlist -->
+                <div class="row my-4">
+                    <ul class="list-group" id="friendslist">
+                        <!-- loading friends from friendList -->
+                        <a href="#" class="list-group-item list-group-item-action text-secondary">loading friends</a>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <!-- New Requests -->
+                
+                <div class="row my-4">
+                    <ol class="list-group" id="requests">
+                        <!-- loading friends from requested that are accepted-->
+                        <li class="list-group-item text-secondary">loading friend requests</li>
+                    </ol>
+                </div>
+
+                <hr>
+
+                <!-- Add Friend -->
+
+                <div class="row my-4">
+                    <div class="btn-group ps-0" type="group">
+                        <input type="text" class="form-control" placeholder="Add Friend to List" name="NewFriend" id="friend-request-name" list="friend-selector">
+                        <button type="submit" class="btn btn-primary" name="action" value="Add" onclick="loadFriendList()">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php
+
         require "start.php";
         if(!isset($_SESSION['user'])) {
             header("Location: login.php");
@@ -49,9 +103,26 @@
             //echo "Friend request rejected!";
 
         }
+            
     ?>
 
-    <h1>Friends</h1>
+
+    
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <script src="main.js"></script>
+    <script>
+        loadFriendList();
+    </script>
+</body>
+
+</html>
+
+<?php
+/*
+
+<h1>Friends</h1>
     <div class="title">
         <a href="logout.php">< Logout</a> | Settings
     </div>
@@ -119,13 +190,5 @@
 
     </form>
 
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <script src="main.js"></script>
-    <script>
-        loadFriendList();
-    </script>
-</body>
-
-</html>
+*/
+?>
