@@ -157,6 +157,7 @@ function loadFriends() {
     xmlhttp.setRequestHeader('Authorization', 'Bearer ' + window.token);
     xmlhttp.send();
 }
+
 loadFriends();
 window.setInterval(function () {
     loadFriends();

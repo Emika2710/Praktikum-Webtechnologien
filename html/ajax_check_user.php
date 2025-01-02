@@ -1,5 +1,8 @@
+
 <?php
 require "start.php";
+
+// Consol log
 
 if (!isset($_GET['user'])) {
     http_response_code(400); // bad request

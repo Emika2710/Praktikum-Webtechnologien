@@ -33,20 +33,12 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     }
 
     // Username überprüfen
-    if(strlen($username) <= 2){
-        $errorName = "Der Benutzername muss mindestens 3 Zeichen lang sein.";
-    }
     if($service->userExists($username)){
         $errorName = "Der Benutzername ist bereits vergeben.";
     }
 
-    // Passwort überprüfen
-    if(strlen($password) < 8){
-        $errorPassword = "Das Passwort muss mindestens 8 Zeichen lang sein.";
-    }
-    if($password != $confirm){
-        $errorConfirm = "Die Passwörter stimmen nicht überein.";
-    }
+
+
 
     // Wenn keine Fehler aufgetreten sind
     if(empty($errorName) && empty($errorPassword)){
@@ -59,23 +51,6 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
             
             header("Location: friendlist.php");
             //exit();
-        }
-    }
-    else{
-        if(!empty($errorName)){
-            echo $errorName;
-            echo "<style>#register_username { outline: 1px solid red; }</style>";
-            // change the placeholder of the username field to red
-        }
-        if(!empty($errorPassword)){
-            echo $errorPassword;
-            // change the password field to red 
-            echo "<style>#register_password { outline: 1px solid red; }</style>";
-        }
-        if(!empty($errorConfirm)){
-            echo $errorConfirm;
-            echo "<style>#register_confirm { outline: 1px solid red; }</style>";
-            // change the confirm field to red
         }
     }
 
@@ -124,14 +99,23 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
                             <div class="form-floating mb-3">
                                 <input type="username" class="form-control" placeholder="Username" name="User" id="register_username" onkeyup="checkUsername()">
                                 <label for="floatingInput">Username</label>
+                                <div class="invalid-feedback">
+                                </div>
                             </div>
+                            
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control" placeholder="Password" name="Passwort" id="register_password" onkeyup="checkPassword()">
                                 <label for="floatingInput">Password</label>
+                                <div class="invalid-feedback">
+                                    The password must be at least 8 characters long.
+                                </div>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control" placeholder="Confirm Password" name="Confirm" id="register_confirm" onkeyup="checkConfirm()">
                                 <label for="floatingInput">Confirm Password</label>
+                                <div class="invalid-feedback">
+                                    The passwords do not match.
+                                </div>
                             </div>
                             
                             <!-- Buttons -->
@@ -141,11 +125,11 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
                                     <button type="submit" class="btn btn-primary">Register</button>
                                 </div>
                             </div>
-                            
                         </div>
                     </form>    
                 </div>
             </div>
+
         </div>
     </div>
   
@@ -178,18 +162,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
     -->
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-        function checkUsername(){
-            var username = document.getElementById("register_username").value;
-            //username.classList.remove('is-valid', 'is-invalid');
-            if(username.length <= 2){
-                document.getElementById("register_username").classList.add("is-invalid");
-            } 
-            else{
-                document.getElementById("register_username").classList.add("is-valid");
-            }
-        }
-    </script>
+    <script src="register_helper.js"></script>
 </body>
 
 </html>
