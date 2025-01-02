@@ -32,14 +32,6 @@ if (isset($_POST["action"]) && $_POST["action"] == "register") {
         $confirm = $_POST["Confirm"];
     }
 
-    // Username überprüfen
-    if($service->userExists($username)){
-        $errorName = "Der Benutzername ist bereits vergeben.";
-    }
-
-
-
-
     // Wenn keine Fehler aufgetreten sind
     if(empty($errorName) && empty($errorPassword)){
 
