@@ -59,7 +59,7 @@ if (isset($_POST["friendlist_reject"]) ) {
         <div class="row justify-content-center">
             <div class="col-8">
                 <!-- Headline -->
-                <div class="row my-3">
+                <div class="row mb-3 mt-5">
                     <h1>Friends</h1>
                 </div>
 
@@ -130,7 +130,6 @@ if (isset($_POST["friendlist_reject"]) ) {
         }
     }
     ?>
-
     
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
