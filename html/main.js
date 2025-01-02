@@ -208,4 +208,5 @@ function loadUser(){
     xmlhttp.open("GET", "ajax_load_users.php", true);
     xmlhttp.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjI5ODkzNTkwfQ.MRSZeLY8YNGp1dBWoYLUXTfs4ci1v13TkhQmke2nfII');
     xmlhttp.send();
+
 }

@@ -33,31 +33,7 @@ if (isset($_POST["friendlist_reject"]) ) {
     //echo $friendName;
     //echo "Friend request rejected!";
 
-}
-
-
-     
-//Neue Freundschaftsanfrage
-if (isset($_POST["action"]) && $_POST["action"] == "Add") {
-
-    // Auslesen der input Zeile
-    $possibleFriend = isset($_POST["NewFriend"]) ? $_POST["NewFriend"] : "";
-
-    // prüfen, ob der Nutzer existiert
-    if ($service->userExists($possibleFriend)) {
-
-        $newFriend = new Model\Friend($possibleFriend);
-        if(!$service->friendRequest($newFriend)) {
-            echo "Failed to send friend request";
-        }
-
-
-    } else {
-        echo "This User doesn't exist";
-    }
-
-}
-    
+} 
     
 ?>
 
@@ -124,18 +100,36 @@ if (isset($_POST["action"]) && $_POST["action"] == "Add") {
                 <!-- THIS DOES NOT YET WORK -->
 
                 <div class="row my-4">
-                    <div class="btn-group ps-0" type="group">
-                        <input type="text" class="form-control" placeholder="Add Friend to List" name="NewFriend" id="friend-request-name" list="friend-selector">
-                        <datalist id="friend-selector">
-                        </datalist>
-                        <button type="submit" class="btn btn-primary" name="action" value="Add" onclick="loadFriendList()">Add</button>
-                    </div>
+                    <form method="post" class="form-group ps-0">   
+                        <div class="btn-group col-12 " type="group">
+                            <input type="text" class="form-control" placeholder="Add Friend to List" name="NewFriend" id="friend-request-name" list="friend-selector">
+                            <datalist id="friend-selector">
+                            </datalist>
+                            <button type="submit" class="btn btn-primary" name="action" value="Add">Add</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
+    <?php
+    //Neue Freundschaftsanfrage
+    if (isset($_POST["action"]) && $_POST["action"] == "Add") {
+        // Auslesen der input Zeile
+        $possibleFriend = isset($_POST["NewFriend"]) ? $_POST["NewFriend"] : "";
+        // prüfen, ob der Nutzer existiert
+        if ($service->userExists($possibleFriend)) {
 
+            $newFriend = new Model\Friend($possibleFriend);
+            if(!$service->friendRequest($newFriend)) {
+                echo "Failed to send friend request";
+            }
+        } else {
+            echo "This User doesn't exist";
+        }
+    }
+    ?>
 
     
     <!-- JS -->
