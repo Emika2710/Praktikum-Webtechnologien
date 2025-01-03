@@ -57,7 +57,7 @@
                          <div class="btn-group" role="group">
                         
                             <a href="friendlist.php" class="btn btn-secondary">< Back</a>
-                            <button type="button" class="btn btn-secondary">Show Profil</button>
+                            <button type="button" class="btn btn-secondary">Show Profile</button>
                             <input type="button" class="btn btn-danger" value="Remove Friend" onclick="showDelete()">
                         </div>
                     </div>

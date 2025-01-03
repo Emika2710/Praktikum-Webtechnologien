@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="style.css">-->
     <meta charset="UTF-8" />
     <title>Logout</title>
 
@@ -13,15 +13,18 @@
     
 </head>
 
-<body>
+<body class="bg-light">
     <?php
         require "start.php";
         session_unset();
     ?>
-    <div class="flex">
-        <img src="../images/logout.png" alt="Logout Image" height="200px" width="200px">
+    <!-- Picture -->
+    <div class="d-flex justify-content-center mt-3" style="margin-top: 20px;">
+        <img src="../images/logout.png" class="rounded-circle" alt="Logout Image" height="200px" width="200px">
     </div>
-    <h1>Logged out...!</h1>
+    <div class="row mb-3 mt-5">
+        <h1>Logged out...</h1>
+    </div>
     see you!<br>
     <br>
     <a href="login.php">Login again</a>
