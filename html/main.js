@@ -69,7 +69,7 @@ function updateFriends(data) {
             li.appendChild(b);
 
             let div = document.createElement('div');
-
+            
             let button1 = document.createElement('button');
             button1.class = "button";
             button1.value = friends;
@@ -81,7 +81,7 @@ function updateFriends(data) {
             button2.value = friends;
             button2.name = "friendlist_decline";
             button2.innerHTML = "Decline";
-
+            
             div.appendChild(button1);
             div.appendChild(button2);
 
